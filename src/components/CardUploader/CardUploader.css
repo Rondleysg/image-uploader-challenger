@@ -1,0 +1,62 @@
+.card {
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 36px 32px;
+    width: 19.125rem;
+    height: 24.313rem;
+}
+
+.card h1 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.035em;
+    color: #4f4f4f;
+}
+
+.card h2 {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.035em;
+    color: #bdbdbd;
+    padding: 1.351rem 0 0;
+}
+
+.card h3 {
+    font-size: 10px;
+    line-height: 15px;
+    padding: 4% 0 6% 0;
+    text-align: center;
+    letter-spacing: -0.035em;
+    color: #828282;
+}
+
+.drag-drop-content {
+    background-color: #f6f8fb;
+    border: 1px dashed #97bef4;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.drag-drop-content.highlight {
+    border-color: purple;
+}
+
+.card button {
+    margin-top: 1.351rem;
+    background: #2f80ed;
+    border-radius: 8px;
+    font-family: "Noto Sans";
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#file_upload {
+    display: none;
+}
