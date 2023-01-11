@@ -18,7 +18,6 @@ async function uploadImage(img: File): Promise<string> {
 
     const resJson: resImg = await res.json();
     const linkImg = resJson.response;
-    console.log(resJson);
 
     return linkImg;
 }
