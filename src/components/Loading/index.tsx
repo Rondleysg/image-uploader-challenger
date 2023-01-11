@@ -4,7 +4,9 @@ const Loading = () => {
     return (
         <div className="loading">
             <h1>Uploading...</h1>
-            <progress></progress>
+            <div className="indeterminate-progress-bar">
+                <div className="indeterminate-progress-bar__progress"></div>
+            </div>
         </div>
     );
 };
