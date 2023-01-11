@@ -5,7 +5,7 @@ import TabComponent from "./pages/UploadImagePage";
 
 function App() {
     const [uploadedImage, setUploadedImage] = useState("");
-    const [currentTab, setCurrentTab] = useState("loading");
+    const [currentTab, setCurrentTab] = useState("cardUpLoader");
 
     return (
         <div className="App">
