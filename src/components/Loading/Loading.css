@@ -1,0 +1,30 @@
+.loading {
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 36px 32px;
+}
+
+.loading h1 {
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.035em;
+    color: #4f4f4f;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.loading progress {
+    width: 21.294rem;
+    height: 15px;
+}
+
+.loading progress::-webkit-progress-bar {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+}
+
+progress::-webkit-progress-value {
+    background: #2f80ed;
+    border-radius: 8px;
+}

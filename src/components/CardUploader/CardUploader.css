@@ -3,8 +3,8 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     padding: 36px 32px;
-    width: 19.125rem;
-    height: 24.313rem;
+    width: 22.125rem;
+    height: 27.313rem;
 }
 
 .card h1 {
@@ -20,7 +20,7 @@
     line-height: 18px;
     letter-spacing: -0.035em;
     color: #bdbdbd;
-    padding: 1.351rem 0 0;
+    padding: 1.351rem 0 1.351rem;
 }
 
 .card h3 {
@@ -40,21 +40,7 @@
 }
 
 .drag-drop-content.highlight {
-    border-color: purple;
-}
-
-.card button {
-    margin-top: 1.351rem;
-    background: #2f80ed;
-    border-radius: 8px;
-    font-family: "Noto Sans";
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: -0.035em;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
+    border-color: #008000;
 }
 
 #file_upload {
