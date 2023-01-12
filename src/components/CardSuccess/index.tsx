@@ -1,5 +1,5 @@
 import Button from "../Button";
-import "./CardSuccess.css";
+import "./CardSuccess.scss";
 
 interface CardSuccessProps {
     uploadedImage: string;

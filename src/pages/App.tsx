@@ -1,7 +1,7 @@
-import "./App.css";
-import Footer from "./components/Footer";
+import "./App.scss";
+import Footer from "../components/Footer";
 import { useState } from "react";
-import TabComponent from "./pages/UploadImagePage";
+import TabComponent from "./UploadImagePage";
 
 function App() {
     const [uploadedImage, setUploadedImage] = useState("");
