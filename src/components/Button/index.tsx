@@ -1,14 +1,18 @@
-import "./Button.scss";
+import classNames from "classnames";
+import style from "./Button.module.scss";
 
 interface ButtonProps {
     children: React.ReactNode;
     btnFor: string;
-    classNames?: string;
+    className?: string;
 }
 
-const Button = ({ children, btnFor, classNames }: ButtonProps) => {
+const Button = ({ children, btnFor, className = "" }: ButtonProps) => {
     return (
-        <label className={`btn ${classNames}`} htmlFor={btnFor}>
+        <label
+            className={classNames({ [style.btn]: true, [style[className]]: className !== "" })}
+            htmlFor={btnFor}
+        >
             {children}
         </label>
     );

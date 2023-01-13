@@ -1,7 +1,8 @@
 import { useState } from "react";
+import classNames from "classnames";
 import uploadImage from "../../services/ws/UploadImage";
 import Button from "../Button";
-import "./CardUploader.scss";
+import style from "./CardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../assets/imgs/uploadPage/image-upload.svg";
 
 interface CardUploaderProps {
@@ -11,16 +12,16 @@ interface CardUploaderProps {
 }
 
 export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderProps) => {
-    const [classList, setClassList] = useState<string>("drag-drop-content");
+    const [classList, setClassList] = useState<string>("");
 
     function onEvent(e: React.DragEvent): void {
         e.preventDefault();
         e.stopPropagation();
         if (e.type === "dragenter" || e.type === "dragover") {
-            setClassList(`drag-drop-content highlight`);
+            setClassList("highlight");
         }
         if (e.type === "dragleave" || e.type === "drop") {
-            setClassList(`drag-drop-content`);
+            setClassList("");
         }
     }
 
@@ -42,12 +43,15 @@ export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderPr
     }
 
     return (
-        <div className="card">
+        <div className={style.card}>
             <h1>Upload your image</h1>
             <h3>File should be Jpeg, Png,...</h3>
             <form>
                 <div
-                    className={classList}
+                    className={classNames({
+                        [style["drag-drop-content"]]: true,
+                        [style[classList]]: classList !== "",
+                    })}
                     onDragEnter={(event) => onEvent(event)}
                     onDragOver={(event) => onEvent(event)}
                     onDragLeave={(event) => onEvent(event)}
@@ -58,6 +62,7 @@ export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderPr
                         id="file_upload"
                         multiple={false}
                         accept="image/*"
+                        hidden
                         onChange={(event) => {
                             onChange(event);
                         }}

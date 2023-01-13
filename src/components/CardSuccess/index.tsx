@@ -1,5 +1,5 @@
 import Button from "../Button";
-import "./CardSuccess.scss";
+import style from "./CardSuccess.module.scss";
 
 interface CardSuccessProps {
     uploadedImage: string;
@@ -7,11 +7,11 @@ interface CardSuccessProps {
 
 const CardSuccess = ({ uploadedImage }: CardSuccessProps) => {
     return (
-        <div className="cardSuccess">
+        <div className={style.cardSuccess}>
             <span className="material-symbols-outlined">check_circle</span>
             <h1>Uploaded Successfully!</h1>
             <img src={uploadedImage} alt="img uploaded" />
-            <label htmlFor="btn-copy-link" className="label-for-copy">
+            <label htmlFor="btn-copy-link" className={style["label-for-copy"]}>
                 <input
                     id="link-url-img-uploaded"
                     readOnly
@@ -21,7 +21,7 @@ const CardSuccess = ({ uploadedImage }: CardSuccessProps) => {
                         navigator.clipboard.writeText(uploadedImage);
                     }}
                 />
-                <Button classNames="btn-copy-link" btnFor="link-url-img-uploaded">
+                <Button className="btn-copy-link" btnFor="link-url-img-uploaded">
                     Copy Link
                 </Button>
             </label>
