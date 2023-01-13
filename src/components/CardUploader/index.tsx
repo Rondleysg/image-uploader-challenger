@@ -2,6 +2,7 @@ import { useState } from "react";
 import uploadImage from "../../services/ws/UploadImage";
 import Button from "../Button";
 import "./CardUploader.scss";
+import { ReactComponent as ImageUpload } from "../../assets/imgs/uploadPage/image-upload.svg";
 
 interface CardUploaderProps {
     uploadedImage: string;
@@ -11,7 +12,6 @@ interface CardUploaderProps {
 
 export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderProps) => {
     const [classList, setClassList] = useState<string>("drag-drop-content");
-    const ImageUpload = require("../../assets/imgs/image-upload.svg").default as string;
 
     function onEvent(e: React.DragEvent): void {
         e.preventDefault();
@@ -62,7 +62,7 @@ export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderPr
                             onChange(event);
                         }}
                     />
-                    <img src={ImageUpload} alt="example img to upload"></img>
+                    <ImageUpload />
                     <h2>Drag & Drop your image here</h2>
                 </div>
                 <h2>Or</h2>

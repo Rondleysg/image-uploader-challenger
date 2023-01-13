@@ -1,5 +1,7 @@
+@import "../../styles/variables";
+
 .loading {
-    background: #ffffff;
+    background: $white;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     padding: 36px 32px;
@@ -7,8 +9,8 @@
     h1 {
         font-size: 18px;
         line-height: 27px;
-        letter-spacing: -0.035em;
-        color: #4f4f4f;
+        letter-spacing: $letter-spacing;
+        color: $dark-gray;
         margin-bottom: 18px;
         text-align: left;
     }
@@ -31,7 +33,7 @@
 }
 
 .indeterminate-progress-bar__progress {
-    background-color: #2f80ed;
+    background-color: $blue;
     border-radius: 8px;
     position: absolute;
     bottom: 0;
