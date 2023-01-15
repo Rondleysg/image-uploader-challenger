@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.label {
+    margin: 14px 0 0 0;
+    display: flex;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    padding: 1rem 0.875rem;
+    width: 100%;
+
+    input {
+        margin-left: 9px;
+        border: none;
+        outline: none;
+    }
+
+    ::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: $letter-spacing;
+        color: #828282;
+    }
+}

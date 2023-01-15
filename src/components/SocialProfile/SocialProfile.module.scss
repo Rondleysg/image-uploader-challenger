@@ -1,0 +1,16 @@
+.socialProfile {
+    align-self: center;
+    h2 {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: -0.035em;
+        color: #828282;
+    }
+    .socialLogos {
+        display: flex;
+        padding: 22px 0;
+        justify-content: space-between;
+    }
+}

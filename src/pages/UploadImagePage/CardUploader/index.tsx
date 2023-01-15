@@ -1,9 +1,9 @@
 import { useState } from "react";
 import classNames from "classnames";
-import uploadImage from "../../services/ws/UploadImage";
-import Button from "../Button";
+import uploadImage from "../../../services/ws/UploadImage";
+import Button from "../../../components/Button";
 import style from "./CardUploader.module.scss";
-import { ReactComponent as ImageUpload } from "../../assets/imgs/uploadPage/image-upload.svg";
+import { ReactComponent as ImageUpload } from "../../../assets/imgs/uploadPage/image-upload.svg";
 
 interface CardUploaderProps {
     uploadedImage: string;

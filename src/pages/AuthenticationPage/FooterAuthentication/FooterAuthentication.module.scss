@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 12px;
+    h3 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: -0.035em;
+        color: #828282;
+        b {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+}
