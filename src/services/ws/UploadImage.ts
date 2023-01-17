@@ -1,25 +1,23 @@
-import { urlApi } from "./WsConfig";
-
-type resImg = {
-    response: string;
-};
+import http from "./WsConfig";
 
 async function uploadImage(img: File): Promise<string> {
-    const url = urlApi;
-
     const formData = new FormData();
 
     formData.append("image", img);
 
-    const res = await fetch(`${url}images`, {
-        method: "POST",
-        body: formData,
-    });
-
-    const resJson: resImg = await res.json();
-    const linkImg = resJson.response;
-
-    return linkImg;
+    return http
+        .request({
+            url: "images",
+            method: "POST",
+            headers: { "Content-Type": "multipart/form-data" },
+            data: formData,
+        })
+        .then((result) => {
+            return result.data.response;
+        })
+        .catch((err) => {
+            throw err;
+        });
 }
 
 export default uploadImage;
