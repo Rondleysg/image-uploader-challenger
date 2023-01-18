@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0 76px 0;
+
+    .divLogoAndSearch {
+        display: flex;
+        align-items: center;
+
+        label {
+            margin: 0 0 0 24px;
+            border-radius: 12px;
+        }
+    }
+}

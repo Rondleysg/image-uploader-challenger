@@ -14,6 +14,7 @@
         "classnames": "^2.3.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-responsive-masonry": "^2.1.7",
         "react-router-dom": "^6.6.2",
         "react-scripts": "5.0.1",
         "sass": "^1.57.1",
@@ -44,5 +45,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "@types/react-responsive-masonry": "^2.1.0"
     }
 }

@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.unsplashpage {
+    background-color: $white;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    font-family: "Poppins";
+    flex-direction: column;
+    margin: 0 99px;
+}
