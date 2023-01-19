@@ -18,6 +18,7 @@ type photoReq = {
 const UnsplashPage = () => {
     const [images, setImages] = useState<IPhoto[]>([]);
     const [visibility, setVisibility] = useState(false);
+    const [textSearch, setTextSearch] = useState("");
 
     const getImages = async () => {
         http.get("images")
@@ -56,9 +57,17 @@ const UnsplashPage = () => {
     return (
         <div className={classNames(style.unsplashpage, style)}>
             <>
-                <HeaderUnplashPage onClick={() => setVisibility(true)} />
+                <HeaderUnplashPage
+                    setTextSearch={setTextSearch}
+                    onClickButton={() => setVisibility(true)}
+                />
                 {images.length < 1 ? (
                     <Loading />
+                ) : textSearch !== "" ? (
+                    <ImagesContentUnsplash
+                        images={images.filter((image) => image.subtitle?.includes(textSearch))}
+                        setImages={setImages}
+                    />
                 ) : (
                     <ImagesContentUnsplash images={images} setImages={setImages} />
                 )}
