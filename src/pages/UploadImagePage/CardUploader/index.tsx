@@ -4,15 +4,27 @@ import uploadImage from "../../../services/ws/UploadImage";
 import Button from "../../../components/Button";
 import style from "./CardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../../assets/imgs/uploadPage/image-upload.svg";
+import Input from "../../../components/Input";
+import IPhoto from "../../../interfaces/IPhoto";
 
 interface CardUploaderProps {
     uploadedImage: string;
     setUploadedImage: React.Dispatch<React.SetStateAction<string>>;
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
+    onClose: () => void;
+    images: IPhoto[];
+    setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
 }
 
-export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderProps) => {
-    const [classList, setClassList] = useState<string>("");
+export const CardUploader = ({
+    setUploadedImage,
+    setCurrentTab,
+    onClose,
+    images,
+    setImages,
+}: CardUploaderProps) => {
+    const [classList, setClassList] = useState("");
+    const [subtitle, setSubtitle] = useState("");
 
     function onEvent(e: React.DragEvent): void {
         e.preventDefault();
@@ -29,21 +41,23 @@ export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderPr
         e.preventDefault();
         setCurrentTab("loading");
         const img = e.dataTransfer.files[0];
-        const link = await uploadImage(img);
+        const { id, link } = await uploadImage(img, subtitle);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
+        setImages([...images, { id: id, link: link, subtitle: subtitle }]);
     }
 
     async function onChange(event: React.ChangeEvent<HTMLInputElement>) {
         setCurrentTab("loading");
         const img = event.target.files![0];
-        const link = await uploadImage(img);
+        const { id, link } = await uploadImage(img, subtitle);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
+        setImages([...images, { id: id, link: link, subtitle: subtitle }]);
     }
 
     return (
-        <div className={style.card}>
+        <div className={classNames(style.card)}>
             <h1>Upload your image</h1>
             <h3>File should be Jpeg, Png,...</h3>
             <form>
@@ -70,8 +84,24 @@ export const CardUploader = ({ setUploadedImage, setCurrentTab }: CardUploaderPr
                     <ImageUpload />
                     <h2>Drag & Drop your image here</h2>
                 </div>
+                <Input
+                    onChange={(event) => {
+                        setSubtitle(event.target.value);
+                    }}
+                    required
+                    id="inputForSubtitle"
+                    placeHolder="Subtitle for image"
+                    type="text"
+                >
+                    <span style={{ color: "#BDBDBD" }} className="material-symbols-outlined">
+                        subtitles
+                    </span>
+                </Input>
                 <h2>Or</h2>
                 <Button btnFor="file_upload">Choose a file</Button>
+                <button className={style.btnCancel} onClick={onClose}>
+                    Cancel
+                </button>
             </form>
         </div>
     );

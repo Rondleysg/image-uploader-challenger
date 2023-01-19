@@ -1,9 +1,11 @@
+import IPhoto from "../../interfaces/IPhoto";
 import http from "./WsConfig";
 
-async function uploadImage(img: File): Promise<string> {
+async function uploadImage(img: File, subtitle: string): Promise<IPhoto> {
     const formData = new FormData();
 
     formData.append("image", img);
+    formData.append("subtitle", subtitle);
 
     return http
         .request({
@@ -13,7 +15,7 @@ async function uploadImage(img: File): Promise<string> {
             data: formData,
         })
         .then((result) => {
-            return result.data.response;
+            return { id: result.data.response.id, link: result.data.response.imageLink };
         })
         .catch((err) => {
             throw err;

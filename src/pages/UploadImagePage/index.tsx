@@ -4,20 +4,35 @@ import Loading from "../../components/Loading";
 import { useState } from "react";
 import style from "./UploadImagePage.module.scss";
 import Footer from "./FooterUploadPage";
+import IPhoto from "../../interfaces/IPhoto";
 
-export default function TabComponentUploadImage() {
+interface TabComponentUploadImageProps {
+    onClose: () => void;
+    images: IPhoto[];
+    setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
+}
+
+export default function TabComponentUploadImage({
+    onClose,
+    images,
+    setImages,
+}: TabComponentUploadImageProps) {
     const [uploadedImage, setUploadedImage] = useState("");
     const [currentTab, setCurrentTab] = useState("cardUpLoader");
+
     return (
         <div className={style.UploadImagePage}>
             {currentTab === "cardUpLoader" ? (
                 <CardUploader
+                    onClose={onClose}
                     uploadedImage={uploadedImage}
                     setUploadedImage={setUploadedImage}
                     setCurrentTab={setCurrentTab}
+                    images={images}
+                    setImages={setImages}
                 />
             ) : currentTab === "cardSuccess" ? (
-                <CardSuccess uploadedImage={uploadedImage} />
+                <CardSuccess uploadedImage={uploadedImage} onClose={onClose} />
             ) : (
                 <Loading />
             )}

@@ -1,12 +1,15 @@
 .UploadImagePage {
-    background-color: #fafafb;
     text-align: center;
-    width: 100vw;
-    height: 100vh;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     font-family: "Poppins";
     flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: -50%;
+    bottom: 0;
+    right: -50%;
+    transition: all 2s ease-in-out;
+    background: rgb(0, 0, 0, 0.7);
 }

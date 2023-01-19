@@ -1,16 +1,24 @@
+import classNames from "classnames";
 import Button from "../../../components/Button";
 import style from "./CardSuccess.module.scss";
 
 interface CardSuccessProps {
     uploadedImage: string;
+    onClose: () => void;
 }
 
-const CardSuccess = ({ uploadedImage }: CardSuccessProps) => {
+const CardSuccess = ({ uploadedImage, onClose }: CardSuccessProps) => {
     return (
         <div className={style.cardSuccess}>
             <span className="material-symbols-outlined">check_circle</span>
             <h1>Uploaded Successfully!</h1>
             <img src={uploadedImage} alt="img uploaded" />
+            <span
+                className={classNames(style.btnClose, "material-symbols-outlined")}
+                onClick={onClose}
+            >
+                cancel
+            </span>
             <label htmlFor="btn-copy-link" className={style["label-for-copy"]}>
                 <input
                     id="link-url-img-uploaded"

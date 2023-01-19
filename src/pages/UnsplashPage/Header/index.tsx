@@ -4,7 +4,11 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import classNames from "classnames";
 
-const HeaderUnplashPage = () => {
+interface HeaderUnplashPageProps {
+    onClick: () => void;
+}
+
+const HeaderUnplashPage = ({ onClick }: HeaderUnplashPageProps) => {
     return (
         <header className={classNames(style.header)}>
             <div className={classNames(style.divLogoAndSearch)}>
@@ -15,7 +19,7 @@ const HeaderUnplashPage = () => {
                     </span>
                 </Input>
             </div>
-            <Button className="btn-unplashhome" btnFor="">
+            <Button onClick={onClick} className="btn-unplashhome" btnFor="">
                 Add a photo
             </Button>
         </header>

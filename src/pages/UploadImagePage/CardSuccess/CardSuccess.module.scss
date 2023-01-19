@@ -10,6 +10,18 @@
     align-items: center;
     width: 25.023rem;
 
+    .btnClose {
+        position: relative;
+        top: -89%;
+        right: -51%;
+        font-weight: 500;
+        line-height: 22px;
+        color: #ff0000;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
     span {
         color: #219653;
         font-size: 35px;

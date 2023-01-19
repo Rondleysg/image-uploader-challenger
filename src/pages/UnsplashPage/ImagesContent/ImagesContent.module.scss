@@ -1,22 +1,43 @@
-.img {
-    border-radius: 16px;
-    transition: all 1s ease-in-out;
-    width: 100%;
+figure {
+    position: relative;
+    display: inline-block;
     &:hover {
-        filter: brightness(70%);
-        + .subtitle {
+        img {
+            filter: brightness(45%);
         }
     }
 }
 
+.img {
+    border-radius: 16px;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+}
+
 .subtitle {
-    position: relative;
     color: white;
     font-weight: 700;
-    bottom: 90px;
-    left: 20px;
     transition: all 1s linear;
-    display: block;
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    font-size: 18px;
+}
+
+.btnDelete {
+    top: 10%;
+    right: 5%;
+    transition: all 1s linear;
+    position: absolute;
+    font-size: 18px;
+    button {
+        border: 1px solid #eb5757;
+        border-radius: 38px;
+        background: none;
+        color: #eb5757;
+        padding: 5px 15px;
+        cursor: pointer;
+    }
 }
 
 .hidden {

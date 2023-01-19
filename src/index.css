@@ -130,3 +130,8 @@ table {
     box-sizing: border-box;
     padding: 0;
 }
+
+.bodyInUpload {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

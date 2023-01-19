@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import { useState, useEffect } from "react";
+import Loading from "../../components/Loading";
 import IPhoto from "../../interfaces/IPhoto";
 import http from "../../services/ws/WsConfig";
+import TabComponentUploadImage from "../UploadImagePage";
 import HeaderUnplashPage from "./Header";
 import ImagesContentUnsplash from "./ImagesContent";
 import style from "./Unsplash.module.scss";
@@ -15,6 +17,7 @@ type photoReq = {
 
 const UnsplashPage = () => {
     const [images, setImages] = useState<IPhoto[]>([]);
+    const [visibility, setVisibility] = useState(false);
 
     const getImages = async () => {
         http.get("images")
@@ -38,11 +41,36 @@ const UnsplashPage = () => {
         getImages();
     }, []);
 
+    useEffect(() => {
+        const body = document.querySelector("body");
+        if (visibility) {
+            body?.classList.add("bodyInUpload");
+            window.scrollTo({
+                top: 0,
+            });
+        } else {
+            body?.classList.remove("bodyInUpload");
+        }
+    }, [visibility]);
+
     return (
         <div className={classNames(style.unsplashpage, style)}>
             <>
-                <HeaderUnplashPage />
-                <ImagesContentUnsplash images={images} />
+                <HeaderUnplashPage onClick={() => setVisibility(true)} />
+                {images.length < 1 ? (
+                    <Loading />
+                ) : (
+                    <ImagesContentUnsplash images={images} setImages={setImages} />
+                )}
+                {visibility && (
+                    <TabComponentUploadImage
+                        onClose={() => {
+                            setVisibility(false);
+                        }}
+                        images={images}
+                        setImages={setImages}
+                    />
+                )}
             </>
         </div>
     );
