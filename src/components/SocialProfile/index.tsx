@@ -1,8 +1,8 @@
-import style from "./SocialProfile.module.scss";
-import { ReactComponent as GithubLogo } from "../../assets/imgs/authenticationPage/Github.svg";
-import { ReactComponent as GoogleLogo } from "../../assets/imgs/authenticationPage/Google.svg";
-import { ReactComponent as FacebookLogo } from "../../assets/imgs/authenticationPage/Facebook.svg";
-import { ReactComponent as TwitterLogo } from "../../assets/imgs/authenticationPage/Twitter.svg";
+import style from "./socialProfile.module.scss";
+import { ReactComponent as GithubLogo } from "../../assets/imgs/Github.svg";
+import { ReactComponent as GoogleLogo } from "../../assets/imgs/Google.svg";
+import { ReactComponent as FacebookLogo } from "../../assets/imgs/Facebook.svg";
+import { ReactComponent as TwitterLogo } from "../../assets/imgs/Twitter.svg";
 
 interface SocialProfileProps {
     children: React.ReactNode;

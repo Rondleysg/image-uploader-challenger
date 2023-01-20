@@ -1,11 +1,15 @@
-import style from "./Loading.module.scss";
+import style from "./loading.module.scss";
 
-const Loading = () => {
+interface LoadingProps {
+    title: string;
+}
+
+const Loading = ({ title }: LoadingProps) => {
     return (
         <div className={style.loading}>
-            <h1>Uploading...</h1>
-            <div className={style["indeterminate-progress-bar"]}>
-                <div className={style["indeterminate-progress-bar__progress"]}></div>
+            <h1>{title}</h1>
+            <div className={style.progressBar}>
+                <div className={style.progress}></div>
             </div>
         </div>
     );

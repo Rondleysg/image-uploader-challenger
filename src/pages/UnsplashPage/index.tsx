@@ -6,7 +6,7 @@ import http from "../../services/ws/WsConfig";
 import TabComponentUploadImage from "../UploadImagePage";
 import HeaderUnplashPage from "./Header";
 import ImagesContentUnsplash from "./ImagesContent";
-import style from "./Unsplash.module.scss";
+import style from "./unsplash.module.scss";
 
 type photoReq = {
     _id: string;
@@ -62,7 +62,7 @@ const UnsplashPage = () => {
                     onClickButton={() => setVisibility(true)}
                 />
                 {images.length < 1 ? (
-                    <Loading />
+                    <Loading title="Loading..." />
                 ) : textSearch !== "" ? (
                     <ImagesContentUnsplash
                         images={images.filter((image) => image.subtitle?.includes(textSearch))}

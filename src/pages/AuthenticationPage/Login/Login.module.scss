@@ -12,7 +12,7 @@
         font-weight: 600;
         font-size: 18px;
         line-height: 25px;
-        letter-spacing: $letter-spacing;
+        letter-spacing: var(--letter-spacing);
         color: #333333;
         margin: 27px 0;
     }

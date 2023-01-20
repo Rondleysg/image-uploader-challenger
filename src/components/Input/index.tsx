@@ -1,4 +1,4 @@
-import style from "./Input.module.scss";
+import style from "./input.module.scss";
 
 interface InputProps {
     type: string;
@@ -9,7 +9,7 @@ interface InputProps {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ type, placeHolder, id, children, required = false, onChange }: InputProps) => {
+const Input = ({ type, placeHolder, id, children, required, onChange }: InputProps) => {
     return (
         <label htmlFor={id} className={style.label}>
             {children}

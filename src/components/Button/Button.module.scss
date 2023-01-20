@@ -1,12 +1,12 @@
 @import "../../styles/variables";
 
 .btn {
-    background: $blue;
+    background: var(--blue);
     border-radius: 8px;
     font-size: 12px;
     line-height: 16px;
-    letter-spacing: $letter-spacing;
-    color: $white;
+    letter-spacing: var(--letter-spacing);
+    color: var(--white);
     padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
@@ -29,7 +29,7 @@
     }
 
     &.btn-unplashhome {
-        background: $blue;
+        background: var(--blue);
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         font-weight: 500;

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Button from "../../../components/Button";
-import style from "./CardSuccess.module.scss";
+import style from "./cardSuccess.module.scss";
 
 interface CardSuccessProps {
     uploadedImage: string;

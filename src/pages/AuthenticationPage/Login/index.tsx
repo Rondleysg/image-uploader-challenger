@@ -1,5 +1,5 @@
-import style from "./Login.module.scss";
-import { ReactComponent as LogoDevChallenges } from "../../../assets/imgs/authenticationPage/devchallenges.svg";
+import style from "./login.module.scss";
+import { ReactComponent as LogoDevChallenges } from "../../../assets/imgs/devchallenges.svg";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import SocialProfile from "../../../components/SocialProfile";

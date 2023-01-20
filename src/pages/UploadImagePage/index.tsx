@@ -2,7 +2,7 @@ import CardSuccess from "./CardSuccess";
 import { CardUploader } from "./CardUploader";
 import Loading from "../../components/Loading";
 import { useState } from "react";
-import style from "./UploadImagePage.module.scss";
+import style from "./uploadImagePage.module.scss";
 import Footer from "./FooterUploadPage";
 import IPhoto from "../../interfaces/IPhoto";
 
@@ -34,7 +34,7 @@ export default function TabComponentUploadImage({
             ) : currentTab === "cardSuccess" ? (
                 <CardSuccess uploadedImage={uploadedImage} onClose={onClose} />
             ) : (
-                <Loading />
+                <Loading title="Uploading..." />
             )}
             <Footer />
         </div>

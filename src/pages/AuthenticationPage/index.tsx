@@ -1,4 +1,4 @@
-import style from "./AuthenticationPage.module.scss";
+import style from "./authenticationPage.module.scss";
 import { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";

@@ -1,5 +1,5 @@
-import style from "./HeaderUnplashPage.module.scss";
-import { ReactComponent as Logo } from "../../../assets/imgs/unsplashPage/my_unsplash_logo.svg";
+import style from "./headerUnplashPage.module.scss";
+import { ReactComponent as Logo } from "../../../assets/imgs/devchallenges.svg";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import classNames from "classnames";

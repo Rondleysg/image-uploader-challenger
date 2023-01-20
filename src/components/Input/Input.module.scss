@@ -18,7 +18,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 22px;
-        letter-spacing: $letter-spacing;
+        letter-spacing: var(--letter-spacing);
         color: #828282;
     }
 }

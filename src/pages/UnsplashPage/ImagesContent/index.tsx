@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import IPhoto from "../../../interfaces/IPhoto";
 import http from "../../../services/ws/WsConfig";
-import style from "./ImagesContent.module.scss";
+import style from "./imagesContent.module.scss";
 
 interface ImagesContentUnsplashProps {
     images: IPhoto[];

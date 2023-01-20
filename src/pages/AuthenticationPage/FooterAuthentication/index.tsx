@@ -1,4 +1,4 @@
-import style from "./FooterAuthentication.module.scss";
+import style from "./footerAuthentication.module.scss";
 
 const FooterAuthentication = () => {
     return (

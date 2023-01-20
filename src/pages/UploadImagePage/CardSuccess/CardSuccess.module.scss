@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 
 .cardSuccess {
-    background: $white;
+    background: var(--white);
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     padding: 2.188rem 1.949rem;
@@ -41,7 +41,7 @@
     }
 
     .label-for-copy {
-        background: $gray-color;
+        background: var(--gray-color);
         border: 1px solid #e0e0e0;
         border-radius: 8px;
         padding: 2px;
@@ -57,8 +57,8 @@
             font-weight: 500;
             font-size: 8px;
             text-align: center;
-            letter-spacing: $letter-spacing;
-            color: $dark-gray;
+            letter-spacing: var(--letter-spacing);
+            color: var(--dark-gray);
             width: 70%;
             border: none;
             background: none;
