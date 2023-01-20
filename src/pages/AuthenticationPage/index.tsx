@@ -8,7 +8,11 @@ const TabComponentAuthentication = () => {
     const [currentTab, setCurrentTab] = useState("loginTab");
     return (
         <div className={style.AuthenticationPage}>
-            {currentTab === "loginTab" ? <Login setCurrentTab={setCurrentTab} /> : <Register />}
+            {currentTab === "loginTab" ? (
+                <Login setCurrentTab={setCurrentTab} />
+            ) : (
+                <Register setCurrentTab={setCurrentTab} />
+            )}
             <FooterAuthentication />
         </div>
     );

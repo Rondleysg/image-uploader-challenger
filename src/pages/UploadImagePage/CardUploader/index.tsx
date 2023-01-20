@@ -44,7 +44,7 @@ export const CardUploader = ({
         const { id, link } = await uploadImage(img, subtitle);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
-        setImages([...images, { id: id, link: link, subtitle: subtitle }]);
+        setImages([{ id: id, link: link, subtitle: subtitle }, ...images]);
     }
 
     async function onChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -53,7 +53,7 @@ export const CardUploader = ({
         const { id, link } = await uploadImage(img, subtitle);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
-        setImages([...images, { id: id, link: link, subtitle: subtitle }]);
+        setImages([{ id: id, link: link, subtitle: subtitle }, ...images]);
     }
 
     return (

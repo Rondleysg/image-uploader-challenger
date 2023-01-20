@@ -1,0 +1,40 @@
+@import "../../../styles/variables";
+
+.registerTab {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #bdbdbd;
+    border-radius: 24px;
+    padding: min(2.125rem, 3.5vh) min(3.625rem, 8.34vw);
+    //padding: 2.125rem 3.625rem;
+    align-items: flex-start;
+    max-height: 94vh;
+
+    h1 {
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 25px;
+        letter-spacing: var(--letter-spacing);
+        color: #333333;
+        margin: min(27px, 3.8%) 0 min(14px, 2%) 0;
+        max-width: 20.625rem;
+        text-align: initial;
+    }
+
+    h3 {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 22px;
+        letter-spacing: var(--letter-spacing);
+        text-align: initial;
+        color: #333333;
+        max-width: 21.25rem;
+        margin-bottom: 1.125rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: #2d9cdb;
+    }
+}

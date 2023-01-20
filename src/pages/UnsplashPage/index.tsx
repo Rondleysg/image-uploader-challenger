@@ -31,7 +31,7 @@ const UnsplashPage = () => {
                         subtitle: element.subtitle ? element.subtitle : "",
                     };
                 });
-                setImages(imagesList);
+                setImages(imagesList.reverse());
             })
             .catch((err) => {
                 throw err;
