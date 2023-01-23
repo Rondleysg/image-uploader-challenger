@@ -4,10 +4,10 @@ import Login from "./Login";
 import Register from "./Register";
 import FooterAuthentication from "./FooterAuthentication";
 
-const TabComponentAuthentication = () => {
+const AuthenticationPage = () => {
     const [currentTab, setCurrentTab] = useState("loginTab");
     return (
-        <div className={style.AuthenticationPage}>
+        <div className={style.authenticationPage}>
             {currentTab === "loginTab" ? (
                 <Login setCurrentTab={setCurrentTab} />
             ) : (
@@ -18,4 +18,4 @@ const TabComponentAuthentication = () => {
     );
 };
 
-export default TabComponentAuthentication;
+export default AuthenticationPage;
