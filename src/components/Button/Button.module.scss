@@ -39,6 +39,20 @@
         height: 3rem;
     }
 
+    &.btn-save-editProfile {
+        background: var(--blue);
+        box-shadow: 0px 1px 6px rgb(0 0 0 / 10%);
+        width: 82px;
+        height: 38px;
+        border-radius: 8px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: -0.035em;
+        color: #ffffff;
+    }
+
     &.btn-profile-page {
         background: none;
         border: 1px solid #828282;

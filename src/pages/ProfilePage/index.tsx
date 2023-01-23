@@ -11,7 +11,12 @@ const ProfilePage = () => {
     const [currentTabProfile, setCurrentTabProfile] = useState("profile");
 
     return (
-        <div className={classNames({ [style.profilePage]: currentTabProfile === "profile" })}>
+        <div
+            className={classNames({
+                [style.profilePage]: currentTabProfile === "profile",
+                [style.editProfile]: currentTabProfile === "edit",
+            })}
+        >
             <HeaderProfilePage currentTabProfile={currentTabProfile} />
             {currentTabProfile === "profile" ? (
                 <div>
@@ -60,14 +65,16 @@ const ProfilePage = () => {
                     </div>
                 </div>
             ) : (
-                <div className={style.editProfile}>
-                    <button
-                        onClick={() => {
-                            setCurrentTabProfile("profile");
-                        }}
-                    >{`< Back`}</button>
-                    <div className={style.profileContent}>
-                        <EditProfile />
+                <div className={style.pageContentProfile}>
+                    <div className={style.editProfileContent}>
+                        <button
+                            onClick={() => {
+                                setCurrentTabProfile("profile");
+                            }}
+                        >{`< Back`}</button>
+                        <div className={style.editProfileContent}>
+                            <EditProfile />
+                        </div>
                     </div>
                 </div>
             )}

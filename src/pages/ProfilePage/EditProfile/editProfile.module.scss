@@ -1,10 +1,15 @@
 @import "../../../styles/variables";
 
 .editProfile {
+    margin-top: 24px;
     letter-spacing: var(--letter-spacing);
     color: #000000;
     font-style: normal;
     font-weight: 400;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 57vw;
 
     h1 {
         font-size: 24px;
@@ -16,5 +21,32 @@
         font-size: 13px;
         line-height: 18px;
         color: #828282;
+    }
+
+    .img {
+        width: 5vw;
+        height: 5vw;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        background-size: cover;
+        background-blend-mode: color-burn;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 26px;
+    }
+
+    .itemEditProfile {
+        margin: 24px 0 24px 0;
+        display: flex;
+        align-items: center;
+
+        button {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 18px;
+            color: #828282;
+            text-transform: uppercase;
+        }
     }
 }

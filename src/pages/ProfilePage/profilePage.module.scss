@@ -85,22 +85,37 @@
             text-decoration: underline;
         }
     }
+}
 
-    .editProfile {
+.editProfile {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    background-color: var(--white);
+    height: auto;
+    width: auto;
+    font-family: "Poppins";
+    flex-direction: column;
+    letter-spacing: var(--letter-spacing);
+    color: #000000;
+    font-style: normal;
+    margin: 0 99px;
+
+    header {
+        width: 100%;
+    }
+
+    .pageContentProfile {
         display: flex;
+        align-items: center;
         flex-direction: column;
+        width: 100%;
+    }
+
+    .editProfileContent {
+        display: flex;
         align-items: flex-start;
-        letter-spacing: var(--letter-spacing);
-        font-style: normal;
-        font-weight: 400;
-        background-color: var(--white);
-        height: auto;
-        width: auto;
-        font-family: "Poppins";
         flex-direction: column;
-        letter-spacing: var(--letter-spacing);
-        color: #000000;
-        font-style: normal;
 
         button {
             background: none;

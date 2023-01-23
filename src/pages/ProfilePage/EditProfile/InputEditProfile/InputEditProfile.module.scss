@@ -1,0 +1,24 @@
+.label {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #4f4f4f;
+    display: flex;
+    flex-direction: column;
+    margin: 24px 0;
+
+    .input {
+        border: 1px solid #828282;
+        border-radius: 12px;
+        font-style: normal;
+        font-family: "Poppins";
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: -0.035em;
+        color: #bdbdbd;
+        padding: 17px 18px;
+        margin-top: 3px;
+        width: 60%;
+    }
+}
