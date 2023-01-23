@@ -38,4 +38,17 @@
         width: 8rem;
         height: 3rem;
     }
+
+    &.btn-profile-page {
+        background: none;
+        border: 1px solid #828282;
+        border-radius: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: var(--letter-spacing);
+        color: #828282;
+        padding: 7px 35px;
+    }
 }

@@ -3,6 +3,8 @@ import { ReactComponent as Logo } from "../../../assets/imgs/devchallenges.svg";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import classNames from "classnames";
+import UserInfo from "../../../components/UserInfo";
+import { Link } from "react-router-dom";
 
 interface HeaderUnplashPageProps {
     onClickButton: () => void;
@@ -12,8 +14,10 @@ interface HeaderUnplashPageProps {
 const HeaderUnplashPage = ({ onClickButton, setTextSearch }: HeaderUnplashPageProps) => {
     return (
         <header className={classNames(style.header)}>
-            <div className={classNames(style.divLogoAndSearch)}>
-                <Logo />
+            <div className={classNames(style.divFlexCenter)}>
+                <Link to="/">
+                    <Logo width={235} />
+                </Link>
                 <Input
                     onChange={(event) => setTextSearch(event.target.value)}
                     id="inputSearchImagesByName"
@@ -25,9 +29,12 @@ const HeaderUnplashPage = ({ onClickButton, setTextSearch }: HeaderUnplashPagePr
                     </span>
                 </Input>
             </div>
-            <Button onClick={onClickButton} className="btn-unplashhome" btnFor="">
-                Add a photo
-            </Button>
+            <div className={classNames(style.divFlexCenter)}>
+                <Button onClick={onClickButton} className="btn-unplashhome" btnFor="">
+                    Add a photo
+                </Button>
+                <UserInfo currentTabProfile="" />
+            </div>
         </header>
     );
 };

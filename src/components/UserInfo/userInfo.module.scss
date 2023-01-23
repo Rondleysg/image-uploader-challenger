@@ -1,0 +1,99 @@
+.divFlexCenter {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    label {
+        margin: 0 0 0 40px;
+        border-radius: 12px;
+    }
+
+    img {
+        margin: 0 11px 0 32px;
+        width: 48px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: var(--letter-spacing);
+        color: #333333;
+        margin-right: 16px;
+    }
+
+    span {
+        color: #333333;
+        font-size: 26px;
+    }
+}
+
+.userInfos {
+    position: relative;
+}
+
+.menuUserInfos {
+    width: 13vw;
+    position: absolute;
+    top: 120%;
+    left: 15%;
+    background-color: var(--white);
+    z-index: 1;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .line {
+        border: 1px solid #e0e0e0;
+        transform: rotate(0deg);
+    }
+}
+
+.optionMenu {
+    display: flex;
+    padding: 13px;
+    align-items: center;
+    border-radius: 8px;
+
+    h4 {
+        margin-left: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: var(--letter-spacing);
+        color: #4f4f4f;
+    }
+
+    span {
+        font-size: 20px;
+        color: #4f4f4f;
+
+        &.spanProfile {
+            font-size: 16px;
+            border-radius: 100%;
+            background-color: #4f4f4f;
+            color: var(--white);
+            padding: 2px;
+        }
+    }
+
+    .logout {
+        color: #ff0000;
+    }
+
+    &.inUse {
+        background-color: #f2f2f2;
+    }
+
+    &:hover {
+        background-color: #f2f2f2;
+    }
+}

@@ -1,0 +1,33 @@
+@import "../../../styles/variables";
+
+.item {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing);
+
+    h6 {
+        font-variant: all-petite-caps;
+        font-size: 16px;
+        line-height: 18px;
+        color: #bdbdbd;
+    }
+
+    .itemKey {
+        width: 75px;
+    }
+
+    .itemValue {
+        margin-left: 11vw;
+        img {
+            width: 5vw;
+            border-radius: 8px;
+        }
+        h5 {
+            font-size: 16px;
+            line-height: 25px;
+            color: #333333;
+        }
+    }
+}
