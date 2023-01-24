@@ -1,20 +1,50 @@
 import Button from "../../../components/Button";
 import style from "./editProfile.module.scss";
 import InputEditProfile from "./InputEditProfile";
+import IUser from "../../../interfaces/IUser";
+import { useState } from "react";
+import editUser from "../../../services/ws/user/EditUser";
+import editPhotoUser from "../../../services/ws/user/EditPhotoUser";
 
-const EditProfile = () => {
+interface EditProfileProps {
+    user: IUser;
+    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+}
+
+const EditProfile = ({ user, setUser }: EditProfileProps) => {
+    const [newUser, setNewUser] = useState<IUser>({ ...user });
+    const [msgError, setMsgError] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+
+    async function onChangePhoto(event: React.ChangeEvent<HTMLInputElement>) {
+        event.preventDefault();
+        const img = event.target.files![0];
+        const result = await editPhotoUser(user.id, img);
+        //setUser(...user, profilePicture: );
+        localStorage.setItem("user", JSON.stringify(newUser));
+        setMsgError(result);
+    }
+
+    async function onSubmit() {
+        const result = await editUser(newUser, user, newPassword);
+        setMsgError(result);
+        setUser(newUser);
+        localStorage.setItem("user", JSON.stringify(newUser));
+    }
+
     return (
         <div className={style.editProfile}>
             <div>
                 <h1>Change Info</h1>
                 <h3>Changes will be reflected to every services</h3>
+                {msgError ? <h4 className={style.msgError}>{msgError}</h4> : ""}
             </div>
             <div className={style.itemEditProfile}>
                 <div
                     className={style.img}
                     style={{
                         backgroundImage: `url(
-                            "https://img.freepik.com/vetores-premium/icone-do-usuario-simbolo-da-pessoa-humana-icone-de-perfil-social-sinal-de-login-do-avatar-simbolo-do-usuario-da-web-botao-da-web-da-interface-de-usuario-branco-neumorphic-ui-ux-neumorfismo-vetor-eps-10_399089-2757.jpg?w=250"
+                            "${newUser.profilePicture}"
                         )`,
                     }}
                 >
@@ -22,18 +52,60 @@ const EditProfile = () => {
                         photo_camera
                     </span>
                 </div>
-                <button>Change Photo</button>
+                <input
+                    onChange={onChangePhoto}
+                    type="file"
+                    accept="image/*"
+                    id="imgUser-input"
+                    hidden
+                />
+                <label htmlFor="imgUser-input">Change Photo</label>
             </div>
-            <InputEditProfile type="text" keyInput="Name" placeholder="Enter your name..." />
-            <InputEditProfile type="text" keyInput="Bio" placeholder="Enter your bio..." />
-            <InputEditProfile type="tel" keyInput="Phone" placeholder="Enter your phone..." />
-            <InputEditProfile type="email" keyInput="Email" placeholder="Enter your email..." />
             <InputEditProfile
+                value={newUser.username}
+                onChange={(event) => {
+                    setNewUser({ ...newUser, username: event.target.value });
+                }}
+                type="text"
+                keyInput="Name"
+                placeholder="Enter your name..."
+            />
+            <InputEditProfile
+                value={newUser.bio}
+                onChange={(event) => {
+                    setNewUser({ ...newUser, bio: event.target.value });
+                }}
+                type="text"
+                keyInput="Bio"
+                placeholder="Enter your bio..."
+            />
+            <InputEditProfile
+                value={newUser.phone}
+                onChange={(event) => {
+                    setNewUser({ ...newUser, phone: event.target.value });
+                }}
+                type="tel"
+                keyInput="Phone"
+                placeholder="Enter your phone..."
+            />
+            <InputEditProfile
+                value={newUser.email}
+                onChange={(event) => {
+                    setNewUser({ ...newUser, email: event.target.value });
+                }}
+                type="email"
+                keyInput="Email"
+                placeholder="Enter your email..."
+            />
+            <InputEditProfile
+                onChange={(event) => {
+                    setNewPassword(event.target.value);
+                }}
                 type="password"
                 keyInput="Password"
                 placeholder="Enter your new password..."
             />
-            <Button className="btn-save-editProfile" btnFor="">
+            <Button onClick={onSubmit} className="btn-save-editProfile" btnFor="">
                 Save
             </Button>
         </div>

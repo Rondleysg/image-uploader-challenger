@@ -5,13 +5,15 @@ import Button from "../../../components/Button";
 import classNames from "classnames";
 import UserInfo from "../../../components/UserInfo";
 import { Link } from "react-router-dom";
+import IUser from "../../../interfaces/IUser";
 
 interface HeaderUnplashPageProps {
     onClickButton: () => void;
     setTextSearch: React.Dispatch<React.SetStateAction<string>>;
+    user: IUser;
 }
 
-const HeaderUnplashPage = ({ onClickButton, setTextSearch }: HeaderUnplashPageProps) => {
+const HeaderUnplashPage = ({ onClickButton, setTextSearch, user }: HeaderUnplashPageProps) => {
     return (
         <header className={classNames(style.header)}>
             <div className={classNames(style.divFlexCenter)}>
@@ -33,7 +35,7 @@ const HeaderUnplashPage = ({ onClickButton, setTextSearch }: HeaderUnplashPagePr
                 <Button onClick={onClickButton} className="btn-unplashhome" btnFor="">
                     Add a photo
                 </Button>
-                <UserInfo currentTabProfile="" />
+                <UserInfo user={user} currentTabProfile="" />
             </div>
         </header>
     );

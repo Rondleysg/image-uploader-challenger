@@ -4,12 +4,25 @@ import style from "./formAuthentication.module.scss";
 
 interface FormAuthenticationProps {
     textButton: string;
+    setEmail: React.Dispatch<React.SetStateAction<string>>;
+    setPassword: React.Dispatch<React.SetStateAction<string>>;
+    onSubmit: (event: React.FormEvent<HTMLFormElement>) => {};
 }
 
-const FormAuthentication = ({ textButton }: FormAuthenticationProps) => {
+const FormAuthentication = ({
+    textButton,
+    setEmail,
+    setPassword,
+    onSubmit,
+}: FormAuthenticationProps) => {
     return (
-        <form className={style.form}>
-            <Input id="emailInputLogin" type="email" placeHolder="Email">
+        <form className={style.form} onSubmit={onSubmit}>
+            <Input
+                onChange={(event) => setEmail(event.target.value)}
+                id="emailInputLogin"
+                type="email"
+                placeHolder="Email"
+            >
                 <span
                     className="material-symbols-outlined"
                     style={{ fontSize: "20px", color: "#828282" }}
@@ -17,7 +30,12 @@ const FormAuthentication = ({ textButton }: FormAuthenticationProps) => {
                     mail
                 </span>
             </Input>
-            <Input id="passwordInputLogin" type="password" placeHolder="Password">
+            <Input
+                onChange={(event) => setPassword(event.target.value)}
+                id="passwordInputLogin"
+                type="password"
+                placeHolder="Password"
+            >
                 <span
                     className="material-symbols-outlined"
                     style={{ fontSize: "20px", color: "#828282" }}

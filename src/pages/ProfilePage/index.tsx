@@ -6,8 +6,14 @@ import style from "./profilePage.module.scss";
 import { useState } from "react";
 import EditProfile from "./EditProfile";
 import classNames from "classnames";
+import IUser from "../../interfaces/IUser";
 
-const ProfilePage = () => {
+interface ProfilePageProps {
+    user: IUser;
+    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+}
+
+const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
     const [currentTabProfile, setCurrentTabProfile] = useState("profile");
 
     return (
@@ -17,7 +23,7 @@ const ProfilePage = () => {
                 [style.editProfile]: currentTabProfile === "edit",
             })}
         >
-            <HeaderProfilePage currentTabProfile={currentTabProfile} />
+            <HeaderProfilePage user={user} currentTabProfile={currentTabProfile} />
             {currentTabProfile === "profile" ? (
                 <div>
                     <div className={style.pageContent}>
@@ -41,20 +47,13 @@ const ProfilePage = () => {
                             </div>
                             <Line />
                             <ItemInfoProfile line keyItem="photo">
-                                <img
-                                    src="https://img.freepik.com/vetores-premium/icone-do-usuario-simbolo-da-pessoa-humana-icone-de-perfil-social-sinal-de-login-do-avatar-simbolo-do-usuario-da-web-botao-da-web-da-interface-de-usuario-branco-neumorphic-ui-ux-neumorfismo-vetor-eps-10_399089-2757.jpg?w=250"
-                                    alt="imagem profile"
-                                />
+                                <img src={user.profilePicture} alt="imagem profile" />
                             </ItemInfoProfile>
-                            <ItemInfoProfile line keyItem="name" value="Xanthe Neal" />
-                            <ItemInfoProfile
-                                line
-                                keyItem="bio"
-                                value="I am a software developer and a big fan of devchallenges..."
-                            />
-                            <ItemInfoProfile line keyItem="phone" value="908249274292" />
-                            <ItemInfoProfile line keyItem="email" value="xanthe.neal@gmail.com" />
-                            <ItemInfoProfile keyItem="password" value="************" />
+                            <ItemInfoProfile line keyItem="name" value={user.username} />
+                            <ItemInfoProfile line keyItem="bio" value={user.bio} />
+                            <ItemInfoProfile line keyItem="phone" value={user.phone} />
+                            <ItemInfoProfile line keyItem="email" value={user.email} />
+                            <ItemInfoProfile keyItem="password" value="**********" />
                         </div>
                         <div className={style.footer}>
                             <h2>
@@ -73,7 +72,7 @@ const ProfilePage = () => {
                             }}
                         >{`< Back`}</button>
                         <div className={style.editProfileContent}>
-                            <EditProfile />
+                            <EditProfile setUser={setUser} user={user} />
                         </div>
                     </div>
                 </div>

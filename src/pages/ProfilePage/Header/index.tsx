@@ -3,12 +3,14 @@ import style from "./header.module.scss";
 import { ReactComponent as Logo } from "../../../assets/imgs/devchallenges.svg";
 import UserInfo from "../../../components/UserInfo";
 import { Link } from "react-router-dom";
+import IUser from "../../../interfaces/IUser";
 
 interface HeaderProfilePageProps {
     currentTabProfile: string;
+    user: IUser;
 }
 
-const HeaderProfilePage = ({ currentTabProfile }: HeaderProfilePageProps) => {
+const HeaderProfilePage = ({ currentTabProfile, user }: HeaderProfilePageProps) => {
     return (
         <header className={classNames(style.header)}>
             <div className={classNames(style.divFlexCenter)}>
@@ -17,7 +19,7 @@ const HeaderProfilePage = ({ currentTabProfile }: HeaderProfilePageProps) => {
                 </Link>
             </div>
             <div className={classNames(style.divFlexCenter)}>
-                <UserInfo currentTabProfile={currentTabProfile} />
+                <UserInfo user={user} currentTabProfile={currentTabProfile} />
             </div>
         </header>
     );

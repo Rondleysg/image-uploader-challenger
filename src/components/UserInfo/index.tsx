@@ -2,24 +2,22 @@ import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./userInfo.module.scss";
+import IUser from "../../interfaces/IUser";
 
 interface UserInfoProps {
     currentTabProfile: string;
+    user: IUser;
 }
 
-const UserInfo = ({ currentTabProfile }: UserInfoProps) => {
+const UserInfo = ({ currentTabProfile, user }: UserInfoProps) => {
     const [dropDownActive, setDropDownActive] = useState(false);
-
     return (
         <div
             onClick={(event) => setDropDownActive(!dropDownActive)}
             className={classNames(style.divFlexCenter, style.userInfos)}
         >
-            <img
-                src="https://img.freepik.com/vetores-premium/icone-do-usuario-simbolo-da-pessoa-humana-icone-de-perfil-social-sinal-de-login-do-avatar-simbolo-do-usuario-da-web-botao-da-web-da-interface-de-usuario-branco-neumorphic-ui-ux-neumorfismo-vetor-eps-10_399089-2757.jpg?w=250"
-                alt="img of profile"
-            />
-            <h2>Xanthe Neal</h2>
+            <img src={user.profilePicture} alt="img of profile" />
+            <h2>{user.username}</h2>
             {dropDownActive ? (
                 <span className="material-symbols-outlined">arrow_drop_up</span>
             ) : (

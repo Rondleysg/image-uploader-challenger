@@ -41,12 +41,17 @@
         display: flex;
         align-items: center;
 
-        button {
+        label {
             font-weight: 500;
             font-size: 13px;
             line-height: 18px;
             color: #828282;
             text-transform: uppercase;
         }
+    }
+
+    .msgError {
+        color: #ff0000;
+        font-size: 14px;
     }
 }

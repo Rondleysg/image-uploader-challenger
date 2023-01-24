@@ -7,6 +7,7 @@ import TabComponentUploadImage from "../UploadImagePage";
 import HeaderUnplashPage from "./Header";
 import ImagesContentUnsplash from "./ImagesContent";
 import style from "./unsplash.module.scss";
+import IUser from "../../interfaces/IUser";
 
 type photoReq = {
     _id: string;
@@ -15,7 +16,11 @@ type photoReq = {
     subtitle?: string;
 };
 
-const UnsplashPage = () => {
+interface UnsplashPageProps {
+    user: IUser;
+}
+
+const UnsplashPage = ({ user }: UnsplashPageProps) => {
     const [images, setImages] = useState<IPhoto[]>([]);
     const [visibility, setVisibility] = useState(false);
     const [textSearch, setTextSearch] = useState("");
@@ -60,6 +65,7 @@ const UnsplashPage = () => {
                 <HeaderUnplashPage
                     setTextSearch={setTextSearch}
                     onClickButton={() => setVisibility(true)}
+                    user={user}
                 />
                 {images.length < 1 ? (
                     <Loading title="Loading..." />

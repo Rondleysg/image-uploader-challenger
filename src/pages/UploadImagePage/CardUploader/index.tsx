@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-import uploadImage from "../../../services/ws/UploadImage";
+import uploadImage from "../../../services/ws/image/UploadImage";
 import Button from "../../../components/Button";
 import style from "./cardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../../assets/imgs/image-upload.svg";

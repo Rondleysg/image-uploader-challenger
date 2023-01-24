@@ -1,5 +1,5 @@
-import IPhoto from "../../interfaces/IPhoto";
-import http from "./WsConfig";
+import IPhoto from "../../../interfaces/IPhoto";
+import http from "../WsConfig";
 
 async function uploadImage(img: File, subtitle: string): Promise<IPhoto> {
     const formData = new FormData();
