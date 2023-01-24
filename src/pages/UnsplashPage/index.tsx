@@ -65,7 +65,9 @@ const UnsplashPage = () => {
                     <Loading title="Loading..." />
                 ) : textSearch !== "" ? (
                     <ImagesContentUnsplash
-                        images={images.filter((image) => image.subtitle?.includes(textSearch))}
+                        images={images.filter((image) =>
+                            image.subtitle?.toLowerCase().includes(textSearch.toLowerCase())
+                        )}
                         setImages={setImages}
                     />
                 ) : (
