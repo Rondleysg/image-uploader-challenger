@@ -81,6 +81,7 @@ const UnsplashPage = ({ user }: UnsplashPageProps) => {
                 )}
                 {visibility && (
                     <TabComponentUploadImage
+                        user={user}
                         onClose={() => {
                             setVisibility(false);
                         }}

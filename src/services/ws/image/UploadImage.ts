@@ -1,7 +1,8 @@
 import IPhoto from "../../../interfaces/IPhoto";
+import IUser from "../../../interfaces/IUser";
 import http from "../WsConfig";
 
-async function uploadImage(img: File, subtitle: string): Promise<IPhoto> {
+async function uploadImage(img: File, subtitle: string, user: IUser): Promise<IPhoto> {
     const formData = new FormData();
 
     formData.append("image", img);
@@ -11,7 +12,10 @@ async function uploadImage(img: File, subtitle: string): Promise<IPhoto> {
         .request({
             url: "images",
             method: "POST",
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${user.token}`,
+            },
             data: formData,
         })
         .then((result) => {

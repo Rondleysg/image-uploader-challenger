@@ -5,17 +5,20 @@ import { useState } from "react";
 import style from "./uploadImagePage.module.scss";
 import Footer from "./FooterUploadPage";
 import IPhoto from "../../interfaces/IPhoto";
+import IUser from "../../interfaces/IUser";
 
 interface TabComponentUploadImageProps {
     onClose: () => void;
     images: IPhoto[];
     setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
+    user: IUser;
 }
 
 export default function TabComponentUploadImage({
     onClose,
     images,
     setImages,
+    user,
 }: TabComponentUploadImageProps) {
     const [uploadedImage, setUploadedImage] = useState("");
     const [currentTab, setCurrentTab] = useState("cardUpLoader");
@@ -24,6 +27,7 @@ export default function TabComponentUploadImage({
         <div className={style.UploadImagePage}>
             {currentTab === "cardUpLoader" ? (
                 <CardUploader
+                    user={user}
                     onClose={onClose}
                     uploadedImage={uploadedImage}
                     setUploadedImage={setUploadedImage}

@@ -26,7 +26,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         } else {
             setMsgError(result);
         }
-        window.location.reload();
+        //window.location.reload();
     }
 
     async function onSubmit() {

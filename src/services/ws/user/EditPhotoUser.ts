@@ -5,7 +5,7 @@ async function editPhotoUser(user: IUser, img: File): Promise<string> {
     const formData = new FormData();
 
     formData.append("id", user.id);
-    formData.append("profilePicture", img);
+    formData.append("image", img);
 
     return http
         .request({
@@ -19,9 +19,12 @@ async function editPhotoUser(user: IUser, img: File): Promise<string> {
         })
         .then((result) => {
             console.log(result);
+
             return result.data.response.user.profilePicture;
         })
         .catch((err) => {
+            console.log(err);
+
             if (err.response.status === 400) {
                 return "This email already exists.";
             } else {

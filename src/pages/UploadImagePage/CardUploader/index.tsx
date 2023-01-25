@@ -6,6 +6,7 @@ import style from "./cardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../../assets/imgs/image-upload.svg";
 import Input from "../../../components/Input";
 import IPhoto from "../../../interfaces/IPhoto";
+import IUser from "../../../interfaces/IUser";
 
 interface CardUploaderProps {
     uploadedImage: string;
@@ -14,6 +15,7 @@ interface CardUploaderProps {
     onClose: () => void;
     images: IPhoto[];
     setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
+    user: IUser;
 }
 
 export const CardUploader = ({
@@ -22,6 +24,7 @@ export const CardUploader = ({
     onClose,
     images,
     setImages,
+    user,
 }: CardUploaderProps) => {
     const [classList, setClassList] = useState("");
     const [subtitle, setSubtitle] = useState("");
@@ -41,7 +44,7 @@ export const CardUploader = ({
         e.preventDefault();
         setCurrentTab("loading");
         const img = e.dataTransfer.files[0];
-        const { id, link } = await uploadImage(img, subtitle);
+        const { id, link } = await uploadImage(img, subtitle, user);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
         setImages([{ id: id, link: link, subtitle: subtitle }, ...images]);
@@ -50,7 +53,7 @@ export const CardUploader = ({
     async function onChange(event: React.ChangeEvent<HTMLInputElement>) {
         setCurrentTab("loading");
         const img = event.target.files![0];
-        const { id, link } = await uploadImage(img, subtitle);
+        const { id, link } = await uploadImage(img, subtitle, user);
         setUploadedImage(link);
         setCurrentTab("cardSuccess");
         setImages([{ id: id, link: link, subtitle: subtitle }, ...images]);
