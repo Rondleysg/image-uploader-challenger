@@ -3,6 +3,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import IPhoto from "../../../interfaces/IPhoto";
 import http from "../../../services/ws/WsConfig";
 import style from "./imagesContent.module.scss";
+import { useEffect, useState } from "react";
 
 interface ImagesContentUnsplashProps {
     images: IPhoto[];
@@ -10,6 +11,8 @@ interface ImagesContentUnsplashProps {
 }
 
 const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps) => {
+    const [logged, setLogged] = useState(false);
+
     const showSubtitle = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.currentTarget.children[1].classList.remove(style.hidden, style.visuallyhidden);
         event.currentTarget.children[2].classList.remove(style.hidden, style.visuallyhidden);
@@ -21,9 +24,23 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
     };
 
     const deleteImage = (id: string) => {
-        http.delete(`images/${id}`);
+        const token = JSON.parse(localStorage.getItem("user")!).token;
+        http.request({
+            url: `images/${id}`,
+            method: "DELETE",
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`,
+            },
+        });
         setImages(images.filter((photo) => photo.id !== id));
     };
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            setLogged(true);
+        }
+    }, []);
 
     return (
         <ResponsiveMasonry
@@ -60,13 +77,15 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
                                     style.visuallyhidden
                                 )}
                             >
-                                <button
-                                    onClick={() => {
-                                        deleteImage(element.id);
-                                    }}
-                                >
-                                    delete
-                                </button>
+                                {logged && (
+                                    <button
+                                        onClick={() => {
+                                            deleteImage(element.id);
+                                        }}
+                                    >
+                                        delete
+                                    </button>
+                                )}
                             </figcaption>
                         </figure>
                     );

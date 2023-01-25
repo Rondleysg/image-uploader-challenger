@@ -4,16 +4,22 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import classNames from "classnames";
 import UserInfo from "../../../components/UserInfo";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import IUser from "../../../interfaces/IUser";
 
 interface HeaderUnplashPageProps {
     onClickButton: () => void;
     setTextSearch: React.Dispatch<React.SetStateAction<string>>;
     user: IUser;
+    signed: boolean;
 }
 
-const HeaderUnplashPage = ({ onClickButton, setTextSearch, user }: HeaderUnplashPageProps) => {
+const HeaderUnplashPage = ({
+    onClickButton,
+    setTextSearch,
+    user,
+    signed,
+}: HeaderUnplashPageProps) => {
     return (
         <header className={classNames(style.header)}>
             <div className={classNames(style.divFlexCenter)}>
@@ -32,10 +38,21 @@ const HeaderUnplashPage = ({ onClickButton, setTextSearch, user }: HeaderUnplash
                 </Input>
             </div>
             <div className={classNames(style.divFlexCenter)}>
-                <Button onClick={onClickButton} className="btn-unplashhome" btnFor="">
-                    Add a photo
-                </Button>
-                <UserInfo user={user} currentTabProfile="" />
+                {signed ? (
+                    <>
+                        <Button onClick={onClickButton} className="btn-unplashhome" btnFor="">
+                            Add a photo
+                        </Button>
+
+                        <UserInfo user={user} currentTabProfile="" />
+                    </>
+                ) : (
+                    <NavLink to={"/authenticate"}>
+                        <Button className="btn-unplashhome" btnFor="">
+                            Login
+                        </Button>
+                    </NavLink>
+                )}
             </div>
         </header>
     );

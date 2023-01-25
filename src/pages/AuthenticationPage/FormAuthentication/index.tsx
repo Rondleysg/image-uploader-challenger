@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import style from "./formAuthentication.module.scss";
@@ -44,9 +45,11 @@ const FormAuthentication = ({
                 </span>
             </Input>
             <input id="submitLogin" type="submit" hidden />
-            <Button className="btn-submit-login" btnFor="submitLogin">
-                {textButton}
-            </Button>
+            <Link to={"/"}>
+                <Button className="btn-submit-login" btnFor="submitLogin">
+                    {textButton}
+                </Button>
+            </Link>
         </form>
     );
 };

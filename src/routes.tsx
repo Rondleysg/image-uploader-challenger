@@ -28,9 +28,9 @@ export default function AppRoutes() {
     return (
         <Router>
             <Routes>
+                <Route path="/" element={<UnsplashPage signed={signed} user={user!} />} />
                 {signed ? (
                     <>
-                        <Route path="/" element={<UnsplashPage user={user!} />} />
                         <Route
                             path="profile"
                             element={<ProfilePage setUser={setUser} user={user!} />}

@@ -18,9 +18,10 @@ type photoReq = {
 
 interface UnsplashPageProps {
     user: IUser;
+    signed: boolean;
 }
 
-const UnsplashPage = ({ user }: UnsplashPageProps) => {
+const UnsplashPage = ({ user, signed }: UnsplashPageProps) => {
     const [images, setImages] = useState<IPhoto[]>([]);
     const [visibility, setVisibility] = useState(false);
     const [textSearch, setTextSearch] = useState("");
@@ -66,6 +67,7 @@ const UnsplashPage = ({ user }: UnsplashPageProps) => {
                     setTextSearch={setTextSearch}
                     onClickButton={() => setVisibility(true)}
                     user={user}
+                    signed={signed}
                 />
                 {images.length < 1 ? (
                     <Loading title="Loading..." />
