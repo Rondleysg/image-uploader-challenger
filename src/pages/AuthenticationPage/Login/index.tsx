@@ -5,6 +5,7 @@ import FormAuthentication from "../FormAuthentication";
 import { useState } from "react";
 import IUser from "../../../interfaces/IUser";
 import loginUser from "../../../services/ws/user/LoginUser";
+import { useNavigate } from "react-router";
 
 interface LoginProps {
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
@@ -16,6 +17,7 @@ const Login = ({ setCurrentTab, setSigned, setUser }: LoginProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [msgError, setMsgError] = useState("");
+    const navigate = useNavigate();
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();
@@ -25,13 +27,14 @@ const Login = ({ setCurrentTab, setSigned, setUser }: LoginProps) => {
     async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const result = await loginUser(email, password);
+
         if (typeof result === "string") {
             setMsgError(result);
         } else {
             setUser(result);
             setSigned(true);
-            localStorage.setItem("user", JSON.stringify(result));
-            window.location.replace("/");
+            localStorage.setItem("token", JSON.stringify(result.token));
+            navigate("/");
         }
     }
 

@@ -4,24 +4,31 @@ import IUser from "./interfaces/IUser";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import ProfilePage from "./pages/ProfilePage";
 import UnsplashPage from "./pages/UnsplashPage";
+import getUserByToken from "./services/ws/user/GetUserByToken";
 
 export default function AppRoutes() {
     const [signed, setSigned] = useState<boolean>(false);
     const [user, setUser] = useState<IUser | null>(null);
+
+    const getUser = async (token: string) => {
+        const userFromToken = await getUserByToken(token);
+        setUser(userFromToken);
+        setSigned(true);
+    };
 
     useEffect(() => {
         if (user === null) {
             return;
         }
 
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", user.token);
         setSigned(true);
     }, [user]);
 
     useEffect(() => {
-        if (localStorage.getItem("user") !== null) {
-            setUser(JSON.parse(localStorage.getItem("user")!));
-            setSigned(true);
+        const token = localStorage.getItem("token");
+        if (token) {
+            getUser(token);
         }
     }, []);
 

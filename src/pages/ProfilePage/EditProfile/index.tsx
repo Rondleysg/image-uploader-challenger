@@ -22,7 +22,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         const result = await editPhotoUser(user, img);
         if (result.startsWith("https")) {
             setUser({ ...user, profilePicture: result });
-            localStorage.setItem("user", JSON.stringify(newUser));
+            localStorage.setItem("token", JSON.stringify(newUser.token));
         } else {
             setMsgError(result);
         }
@@ -33,7 +33,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         const result = await editUser(newUser, user, newPassword);
         setMsgError(result);
         setUser(newUser);
-        localStorage.setItem("user", JSON.stringify(newUser));
+        localStorage.setItem("token", JSON.stringify(newUser.token));
         window.location.reload();
     }
 

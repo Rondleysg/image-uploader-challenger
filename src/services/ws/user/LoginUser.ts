@@ -1,5 +1,6 @@
 import IUser from "../../../interfaces/IUser";
 import http from "../WsConfig";
+import getUserByToken from "./GetUserByToken";
 
 async function loginUser(email: string, password: string): Promise<IUser | string> {
     const formData = {
@@ -7,7 +8,7 @@ async function loginUser(email: string, password: string): Promise<IUser | strin
         password: password,
     };
 
-    return http
+    const token = await http
         .request({
             url: "user/login",
             method: "POST",
@@ -15,18 +16,13 @@ async function loginUser(email: string, password: string): Promise<IUser | strin
             data: formData,
         })
         .then((result) => {
-            console.log(result);
-            return {
-                id: result.data.response.user.userID,
-                username: result.data.response.username,
-                email: result.data.response.email,
-                profilePicture: result.data.response.profilePicture,
-                token: result.data.response.token,
-            };
+            return result.data.response.token;
         })
         .catch((err) => {
             return err.response.data.response;
         });
+
+    return await getUserByToken(token);
 }
 
 export default loginUser;
