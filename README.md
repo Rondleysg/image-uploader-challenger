@@ -66,30 +66,28 @@ This application/website was created as a submission to the DevChallenges challe
 
 Challenge: Create an Image Uploader application.
 
--   User story: I can drag and drop an image to upload it
--   User story: I can choose to select an image from my folder
--   User story: I can see a loader when uploading
--   User story: When the image is uploaded, I can see the image and copy it
--   User story: I can choose to copy to the clipboard
+-   ✅ User story: I can drag and drop an image to upload it
+-   ✅ User story: I can choose to select an image from my folder
+-   ✅ User story: I can see a loader when uploading
+-   ✅ User story: When the image is uploaded, I can see the image and copy it
+-   ✅ User story: I can choose to copy to the clipboard
 
 Challenge: Create an Authentication app.
 
--  User story: I can register a new account
--  User story: I can log in
--  User story: I can log in or register with at least one of the following services: Google, Facebook, Twitter or Github
--  User story: I can sign out
--  User story: I can see my profile details
--  User story: I can edit my details including: photo, name, bio, phone, email and password
--  User story: I can upload a new photo or provide an image URL
+-  ✅ User story: I can register a new account
+-  ✅ User story: I can log in
+-  ✅ User story: I can sign out
+-  ✅ User story: I can see my profile details
+-  ✅ User story: I can edit my details including: photo, name, bio, phone, email and password
+-  ✅ User story: I can upload a new photo or provide an image URL
 
 Challenge: Create my Unsplash app.
 
--  User story: I can see a list of photos in the masonry layout that I have added
--  User story: I can add a new photo to the list - the new photo should be on top of the list
--  User story: I can search for photos by label
--  User story: When I hover a photo, I can see a label and a delete button
--  User story: I can delete images
--  User story: When I delete an image, I can enter my password
+-  ✅ User story: I can see a list of photos in the masonry layout that I have added
+-  ✅ User story: I can add a new photo to the list - the new photo should be on top of the list
+-  ✅ User story: I can search for photos by label
+-  ✅ User story: When I hover a photo, I can see a label and a delete button
+-  ✅ User story: I can delete images
 
 ## How To Use
 
