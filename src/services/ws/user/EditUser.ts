@@ -23,7 +23,10 @@ async function editUser(newUser: IUser, oldUser: IUser, newPassword: string): Pr
         .request({
             url: "user",
             method: "PUT",
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${oldUser.token}`,
+            },
             data: formData,
         })
         .then((result) => {

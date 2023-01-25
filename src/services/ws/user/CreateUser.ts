@@ -21,6 +21,7 @@ async function createUser(email: string, password: string): Promise<IUser | stri
                 username: result.data.response.username,
                 email: result.data.response.email,
                 profilePicture: result.data.response.profilePicture,
+                token: result.data.response.token,
             };
         })
         .catch((err) => {

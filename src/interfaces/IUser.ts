@@ -5,4 +5,5 @@ export default interface IUser {
     profilePicture: string;
     bio?: string;
     phone?: string;
+    token: string;
 }

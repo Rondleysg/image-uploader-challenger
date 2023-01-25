@@ -19,10 +19,14 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
     async function onChangePhoto(event: React.ChangeEvent<HTMLInputElement>) {
         event.preventDefault();
         const img = event.target.files![0];
-        const result = await editPhotoUser(user.id, img);
-        //setUser(...user, profilePicture: );
-        localStorage.setItem("user", JSON.stringify(newUser));
-        setMsgError(result);
+        const result = await editPhotoUser(user, img);
+        if (result.startsWith("https")) {
+            setUser({ ...user, profilePicture: result });
+            localStorage.setItem("user", JSON.stringify(newUser));
+        } else {
+            setMsgError(result);
+        }
+        window.location.reload();
     }
 
     async function onSubmit() {
@@ -30,6 +34,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         setMsgError(result);
         setUser(newUser);
         localStorage.setItem("user", JSON.stringify(newUser));
+        window.location.reload();
     }
 
     return (

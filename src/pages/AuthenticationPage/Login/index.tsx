@@ -15,6 +15,7 @@ interface LoginProps {
 const Login = ({ setCurrentTab, setSigned, setUser }: LoginProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [msgError, setMsgError] = useState("");
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();
@@ -22,15 +23,22 @@ const Login = ({ setCurrentTab, setSigned, setUser }: LoginProps) => {
     }
 
     async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-        //const user = await loginUser(email, password);
-        //setUser(user);
-        //setSigned(true);
+        event.preventDefault();
+        const result = await loginUser(email, password);
+        if (typeof result === "string") {
+            setMsgError(result);
+        } else {
+            setUser(result);
+            setSigned(true);
+            localStorage.setItem("user", JSON.stringify(result));
+        }
     }
 
     return (
         <div className={style.LoginTab}>
             <LogoDevChallenges />
             <h1>Login</h1>
+            {msgError ? <h5 className={style.msgError}>{msgError}</h5> : ""}
             <FormAuthentication
                 onSubmit={onSubmit}
                 setEmail={setEmail}

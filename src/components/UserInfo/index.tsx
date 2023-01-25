@@ -11,6 +11,12 @@ interface UserInfoProps {
 
 const UserInfo = ({ currentTabProfile, user }: UserInfoProps) => {
     const [dropDownActive, setDropDownActive] = useState(false);
+
+    function logout() {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     return (
         <div
             onClick={(event) => setDropDownActive(!dropDownActive)}
@@ -48,11 +54,13 @@ const UserInfo = ({ currentTabProfile, user }: UserInfoProps) => {
                             <h4>Group Chat</h4>
                         </div>
                         <div className={style.line}></div>
-                        <div className={style.optionMenu}>
+                        <div onClick={logout} className={style.optionMenu}>
                             <span className={classNames("material-symbols-outlined", style.logout)}>
                                 logout
                             </span>
-                            <h4 className={style.logout}>Logout</h4>
+                            <Link to={"/"}>
+                                <h4 className={style.logout}>Logout</h4>
+                            </Link>
                         </div>
                     </div>
                 </div>

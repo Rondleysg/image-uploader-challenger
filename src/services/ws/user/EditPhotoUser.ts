@@ -1,21 +1,25 @@
+import IUser from "../../../interfaces/IUser";
 import http from "../WsConfig";
 
-async function editPhotoUser(id: string, img: File): Promise<string> {
+async function editPhotoUser(user: IUser, img: File): Promise<string> {
     const formData = new FormData();
 
-    formData.append("id", id);
+    formData.append("id", user.id);
     formData.append("profilePicture", img);
-    console.log(formData);
 
     return http
         .request({
             url: "user",
             method: "PUT",
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${user.token}`,
+            },
             data: formData,
         })
         .then((result) => {
-            return result.data.message;
+            console.log(result);
+            return result.data.response.user.profilePicture;
         })
         .catch((err) => {
             if (err.response.status === 400) {
