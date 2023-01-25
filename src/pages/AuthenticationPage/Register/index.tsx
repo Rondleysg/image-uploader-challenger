@@ -31,6 +31,7 @@ const Register = ({ setCurrentTab, setSigned, setUser }: RegisterProps) => {
             setUser(result);
             setSigned(true);
             localStorage.setItem("user", JSON.stringify(result));
+            window.location.replace("/");
         }
     }
 

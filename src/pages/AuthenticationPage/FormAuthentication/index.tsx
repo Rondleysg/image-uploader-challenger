@@ -45,11 +45,9 @@ const FormAuthentication = ({
                 </span>
             </Input>
             <input id="submitLogin" type="submit" hidden />
-            <Link to={"/"}>
-                <Button className="btn-submit-login" btnFor="submitLogin">
-                    {textButton}
-                </Button>
-            </Link>
+            <Button className="btn-submit-login" btnFor="submitLogin">
+                {textButton}
+            </Button>
         </form>
     );
 };

@@ -18,13 +18,9 @@ async function editPhotoUser(user: IUser, img: File): Promise<string> {
             data: formData,
         })
         .then((result) => {
-            console.log(result);
-
             return result.data.response.user.profilePicture;
         })
         .catch((err) => {
-            console.log(err);
-
             if (err.response.status === 400) {
                 return "This email already exists.";
             } else {

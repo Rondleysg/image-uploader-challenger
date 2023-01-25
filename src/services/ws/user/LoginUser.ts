@@ -16,7 +16,6 @@ async function loginUser(email: string, password: string): Promise<IUser | strin
         })
         .then((result) => {
             console.log(result);
-
             return {
                 id: result.data.response.user.userID,
                 username: result.data.response.username,
