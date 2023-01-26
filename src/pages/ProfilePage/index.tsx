@@ -23,7 +23,7 @@ const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                 [style.editProfile]: currentTabProfile === "edit",
             })}
         >
-            <HeaderProfilePage user={user} currentTabProfile={currentTabProfile} />
+            <HeaderProfilePage currentTabProfile={currentTabProfile} />
             {currentTabProfile === "profile" ? (
                 <div>
                     <div className={style.pageContent}>

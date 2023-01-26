@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserContext from "./context/UserContext";
 import IUser from "./interfaces/IUser";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -33,23 +34,25 @@ export default function AppRoutes() {
     }, []);
 
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<UnsplashPage signed={signed} user={user!} />} />
-                {signed ? (
-                    <>
+        <UserContext.Provider value={user}>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<UnsplashPage signed={signed} />} />
+                    {signed && user ? (
+                        <>
+                            <Route
+                                path="profile"
+                                element={<ProfilePage user={user} setUser={setUser} />}
+                            />
+                        </>
+                    ) : (
                         <Route
-                            path="profile"
-                            element={<ProfilePage setUser={setUser} user={user!} />}
+                            path="*"
+                            element={<AuthenticationPage setUser={setUser} setSigned={setSigned} />}
                         />
-                    </>
-                ) : (
-                    <Route
-                        path="*"
-                        element={<AuthenticationPage setUser={setUser} setSigned={setSigned} />}
-                    />
-                )}
-            </Routes>
-        </Router>
+                    )}
+                </Routes>
+            </Router>
+        </UserContext.Provider>
     );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classNames from "classnames";
 import uploadImage from "../../../services/ws/image/UploadImage";
 import Button from "../../../components/Button";
@@ -6,7 +6,7 @@ import style from "./cardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../../assets/imgs/image-upload.svg";
 import Input from "../../../components/Input";
 import IPhoto from "../../../interfaces/IPhoto";
-import IUser from "../../../interfaces/IUser";
+import UserContext from "../../../context/UserContext";
 
 interface CardUploaderProps {
     uploadedImage: string;
@@ -15,7 +15,6 @@ interface CardUploaderProps {
     onClose: () => void;
     images: IPhoto[];
     setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
-    user: IUser;
 }
 
 export const CardUploader = ({
@@ -24,10 +23,10 @@ export const CardUploader = ({
     onClose,
     images,
     setImages,
-    user,
 }: CardUploaderProps) => {
     const [classList, setClassList] = useState("");
     const [subtitle, setSubtitle] = useState("");
+    const user = useContext(UserContext)!;
 
     function onEvent(e: React.DragEvent): void {
         e.preventDefault();

@@ -5,21 +5,14 @@ import Button from "../../../components/Button";
 import classNames from "classnames";
 import UserInfo from "../../../components/UserInfo";
 import { Link, NavLink } from "react-router-dom";
-import IUser from "../../../interfaces/IUser";
 
 interface HeaderUnplashPageProps {
     onClickButton: () => void;
     setTextSearch: React.Dispatch<React.SetStateAction<string>>;
-    user: IUser;
     signed: boolean;
 }
 
-const HeaderUnplashPage = ({
-    onClickButton,
-    setTextSearch,
-    user,
-    signed,
-}: HeaderUnplashPageProps) => {
+const HeaderUnplashPage = ({ onClickButton, setTextSearch, signed }: HeaderUnplashPageProps) => {
     return (
         <header className={classNames(style.header)}>
             <div className={classNames(style.divFlexCenter)}>
@@ -44,7 +37,7 @@ const HeaderUnplashPage = ({
                             Add a photo
                         </Button>
 
-                        <UserInfo user={user} currentTabProfile="" />
+                        <UserInfo currentTabProfile="" />
                     </>
                 ) : (
                     <NavLink to={"/authenticate"}>

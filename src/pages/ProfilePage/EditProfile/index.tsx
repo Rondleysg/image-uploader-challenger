@@ -22,11 +22,11 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         const result = await editPhotoUser(user, img);
         if (result.startsWith("https")) {
             setUser({ ...user, profilePicture: result });
-            localStorage.setItem("token", JSON.stringify(newUser.token));
+            localStorage.setItem("token", newUser.token);
+            window.location.reload();
         } else {
             setMsgError(result);
         }
-        window.location.reload();
     }
 
     async function onSubmit() {

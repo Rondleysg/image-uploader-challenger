@@ -8,21 +8,24 @@ async function loginUser(email: string, password: string): Promise<IUser | strin
         password: password,
     };
 
-    const token = await http
+    const result = await http
         .request({
             url: "user/login",
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             data: formData,
         })
-        .then((result) => {
-            return result.data.response.token;
+        .then(async (result) => {
+            const user = await getUserByToken(result.data.response.token);
+            return user;
         })
         .catch((err) => {
             return err.response.data.response;
         });
 
-    return await getUserByToken(token);
+    console.log(result);
+
+    return result;
 }
 
 export default loginUser;
