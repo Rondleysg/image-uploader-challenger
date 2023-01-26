@@ -24,7 +24,7 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
     };
 
     const deleteImage = (id: string) => {
-        const token = JSON.parse(localStorage.getItem("token")!);
+        const token = localStorage.getItem("token");
         http.request({
             url: `images/${id}`,
             method: "DELETE",
