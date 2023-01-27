@@ -6,6 +6,7 @@ import { useState } from "react";
 import loginUser from "../../../services/ws/user/LoginUser";
 import { useNavigate } from "react-router";
 import useUser from "../../../hooks/User/useUser";
+import useCookies from "../../../hooks/Cookies/useCookies";
 
 interface LoginProps {
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
@@ -18,6 +19,7 @@ const Login = ({ setCurrentTab, setSigned }: LoginProps) => {
     const [msgError, setMsgError] = useState("");
     const navigate = useNavigate();
     const { setUser } = useUser();
+    const cookies = useCookies();
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();
@@ -33,7 +35,7 @@ const Login = ({ setCurrentTab, setSigned }: LoginProps) => {
         } else {
             setUser(result);
             setSigned(true);
-            localStorage.setItem("token", JSON.stringify(result.token));
+            cookies.set("token", result.token);
             navigate("/");
         }
     }

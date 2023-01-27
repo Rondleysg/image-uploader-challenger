@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./userInfo.module.scss";
 import useUser from "../../hooks/User/useUser";
+import useCookies from "../../hooks/Cookies/useCookies";
 
 interface UserInfoProps {
     currentTabProfile: string;
@@ -11,13 +12,14 @@ interface UserInfoProps {
 const UserInfo = ({ currentTabProfile }: UserInfoProps) => {
     const [dropDownActive, setDropDownActive] = useState(false);
     const { user } = useUser();
+    const cookies = useCookies();
 
     if (!user) {
         return <></>;
     }
 
     function logout() {
-        localStorage.clear();
+        cookies.remove("token");
         window.location.reload();
     }
 

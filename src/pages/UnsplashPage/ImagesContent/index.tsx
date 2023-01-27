@@ -4,6 +4,7 @@ import IPhoto from "../../../interfaces/IPhoto";
 import http from "../../../services/ws/WsConfig";
 import style from "./imagesContent.module.scss";
 import { useEffect, useState } from "react";
+import useCookies from "../../../hooks/Cookies/useCookies";
 
 interface ImagesContentUnsplashProps {
     images: IPhoto[];
@@ -12,6 +13,7 @@ interface ImagesContentUnsplashProps {
 
 const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps) => {
     const [logged, setLogged] = useState(false);
+    const cookies = useCookies();
 
     const showSubtitle = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.currentTarget.children[1].classList.remove(style.hidden, style.visuallyhidden);
@@ -24,7 +26,7 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
     };
 
     const deleteImage = (id: string) => {
-        const token = localStorage.getItem("token");
+        const token = cookies.get("token");
         http.request({
             url: `images/${id}`,
             method: "DELETE",

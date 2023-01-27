@@ -5,6 +5,7 @@ import IUser from "../../../interfaces/IUser";
 import { useState } from "react";
 import editUser from "../../../services/ws/user/EditUser";
 import editPhotoUser from "../../../services/ws/user/EditPhotoUser";
+import useCookies from "../../../hooks/Cookies/useCookies";
 
 interface EditProfileProps {
     user: IUser;
@@ -15,6 +16,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
     const [newUser, setNewUser] = useState<IUser>({ ...user });
     const [msgError, setMsgError] = useState("");
     const [newPassword, setNewPassword] = useState("");
+    const cookies = useCookies();
 
     async function onChangePhoto(event: React.ChangeEvent<HTMLInputElement>) {
         event.preventDefault();
@@ -22,7 +24,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         const result = await editPhotoUser(user, img);
         if (result.startsWith("https")) {
             setUser({ ...user, profilePicture: result });
-            localStorage.setItem("token", newUser.token);
+            cookies.set("token", newUser.token);
             window.location.reload();
         } else {
             setMsgError(result);
@@ -33,7 +35,7 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         const result = await editUser(newUser, user, newPassword);
         setMsgError(result);
         setUser(newUser);
-        localStorage.setItem("token", JSON.stringify(newUser.token));
+        cookies.set("token", newUser.token);
         window.location.reload();
     }
 

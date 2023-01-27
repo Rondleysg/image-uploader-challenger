@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserContext from "./context/User";
+import useCookies from "./hooks/Cookies/useCookies";
 import IUser from "./interfaces/IUser";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -10,6 +11,7 @@ import getUserByToken from "./services/ws/user/GetUserByToken";
 export default function AppRoutes() {
     const [signed, setSigned] = useState<boolean>(false);
     const [user, setUser] = useState<IUser | null>(null);
+    const cookies = useCookies();
 
     useEffect(() => {
         async function getUser(token: string) {
@@ -17,20 +19,20 @@ export default function AppRoutes() {
             setUser(userFromToken);
             setSigned(true);
         }
-        const token = localStorage.getItem("token");
+        const token = cookies.get("token");
         if (token) {
             getUser(token);
         }
-    }, [setUser]);
+    }, [cookies]);
 
     useEffect(() => {
         if (user === null) {
             return;
         }
 
-        localStorage.setItem("token", user.token);
+        cookies.set("token", user.token);
         setSigned(true);
-    }, [user]);
+    }, [user, cookies]);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>

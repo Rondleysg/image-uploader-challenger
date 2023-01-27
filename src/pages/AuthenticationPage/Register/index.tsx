@@ -5,6 +5,7 @@ import FormAuthentication from "../FormAuthentication";
 import { useState } from "react";
 import createUser from "../../../services/ws/user/CreateUser";
 import useUser from "../../../hooks/User/useUser";
+import useCookies from "../../../hooks/Cookies/useCookies";
 
 interface RegisterProps {
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
@@ -16,6 +17,7 @@ const Register = ({ setCurrentTab, setSigned }: RegisterProps) => {
     const [password, setPassword] = useState("");
     const [msgError, setMsgError] = useState("");
     const { setUser } = useUser();
+    const cookies = useCookies();
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();
@@ -30,7 +32,7 @@ const Register = ({ setCurrentTab, setSigned }: RegisterProps) => {
         } else {
             setUser(result);
             setSigned(true);
-            localStorage.setItem("token", JSON.stringify(result.token));
+            cookies.set("token", result.token);
             window.location.replace("/");
         }
     }
