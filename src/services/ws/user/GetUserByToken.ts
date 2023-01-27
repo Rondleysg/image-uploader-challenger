@@ -13,7 +13,7 @@ async function getUserByToken(token: string): Promise<IUser> {
         })
         .then((result) => {
             const {
-                _id: id,
+                id,
                 username,
                 email,
                 profilePicture,
@@ -31,7 +31,6 @@ async function getUserByToken(token: string): Promise<IUser> {
             };
         })
         .catch((err) => {
-            console.log(err);
             return err;
         });
 }

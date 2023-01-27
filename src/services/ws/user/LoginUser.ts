@@ -22,9 +22,6 @@ async function loginUser(email: string, password: string): Promise<IUser | strin
         .catch((err) => {
             return err.response.data.response;
         });
-
-    console.log(result);
-
     return result;
 }
 

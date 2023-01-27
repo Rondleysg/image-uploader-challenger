@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import UserContext from "./context/UserContext";
+import UserContext from "./context/User";
 import IUser from "./interfaces/IUser";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -11,11 +11,17 @@ export default function AppRoutes() {
     const [signed, setSigned] = useState<boolean>(false);
     const [user, setUser] = useState<IUser | null>(null);
 
-    const getUser = async (token: string) => {
-        const userFromToken = await getUserByToken(token);
-        setUser(userFromToken);
-        setSigned(true);
-    };
+    useEffect(() => {
+        async function getUser(token: string) {
+            const userFromToken = await getUserByToken(token);
+            setUser(userFromToken);
+            setSigned(true);
+        }
+        const token = localStorage.getItem("token");
+        if (token) {
+            getUser(token);
+        }
+    }, [setUser]);
 
     useEffect(() => {
         if (user === null) {
@@ -26,30 +32,17 @@ export default function AppRoutes() {
         setSigned(true);
     }, [user]);
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            getUser(token);
-        }
-    }, []);
-
     return (
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{ user, setUser }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<UnsplashPage signed={signed} />} />
                     {signed && user ? (
                         <>
-                            <Route
-                                path="profile"
-                                element={<ProfilePage user={user} setUser={setUser} />}
-                            />
+                            <Route path="profile" element={<ProfilePage />} />
                         </>
                     ) : (
-                        <Route
-                            path="*"
-                            element={<AuthenticationPage setUser={setUser} setSigned={setSigned} />}
-                        />
+                        <Route path="*" element={<AuthenticationPage setSigned={setSigned} />} />
                     )}
                 </Routes>
             </Router>

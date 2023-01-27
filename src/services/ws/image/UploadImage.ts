@@ -19,7 +19,8 @@ async function uploadImage(img: File, subtitle: string, user: IUser): Promise<IP
             data: formData,
         })
         .then((result) => {
-            return { id: result.data.response.id, link: result.data.response.imageLink };
+            const { id, link } = result.data.response;
+            return { id: id, link: link };
         })
         .catch((err) => {
             throw err;

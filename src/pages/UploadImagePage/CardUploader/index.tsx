@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import classNames from "classnames";
 import uploadImage from "../../../services/ws/image/UploadImage";
 import Button from "../../../components/Button";
@@ -6,7 +6,7 @@ import style from "./cardUploader.module.scss";
 import { ReactComponent as ImageUpload } from "../../../assets/imgs/image-upload.svg";
 import Input from "../../../components/Input";
 import IPhoto from "../../../interfaces/IPhoto";
-import UserContext from "../../../context/UserContext";
+import useUser from "../../../hooks/User/useUser";
 
 interface CardUploaderProps {
     uploadedImage: string;
@@ -26,7 +26,7 @@ export const CardUploader = ({
 }: CardUploaderProps) => {
     const [classList, setClassList] = useState("");
     const [subtitle, setSubtitle] = useState("");
-    const user = useContext(UserContext)!;
+    const { user } = useUser();
 
     function onEvent(e: React.DragEvent): void {
         e.preventDefault();
@@ -41,6 +41,9 @@ export const CardUploader = ({
 
     async function onDropImage(e: React.DragEvent) {
         e.preventDefault();
+        if (!user) {
+            return;
+        }
         setCurrentTab("loading");
         const img = e.dataTransfer.files[0];
         const { id, link } = await uploadImage(img, subtitle, user);
@@ -51,6 +54,9 @@ export const CardUploader = ({
 
     async function onChange(event: React.ChangeEvent<HTMLInputElement>) {
         setCurrentTab("loading");
+        if (!user) {
+            return;
+        }
         const img = event.target.files![0];
         const { id, link } = await uploadImage(img, subtitle, user);
         setUploadedImage(link);

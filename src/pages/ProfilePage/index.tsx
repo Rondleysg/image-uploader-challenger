@@ -6,15 +6,14 @@ import style from "./profilePage.module.scss";
 import { useState } from "react";
 import EditProfile from "./EditProfile";
 import classNames from "classnames";
-import IUser from "../../interfaces/IUser";
+import useUser from "../../hooks/User/useUser";
 
-interface ProfilePageProps {
-    user: IUser;
-    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-}
-
-const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
+const ProfilePage = () => {
     const [currentTabProfile, setCurrentTabProfile] = useState("profile");
+    const { user, setUser } = useUser();
+    if (!user) {
+        return <></>;
+    }
 
     return (
         <div

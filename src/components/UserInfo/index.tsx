@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./userInfo.module.scss";
-import UserContext from "../../context/UserContext";
+import useUser from "../../hooks/User/useUser";
 
 interface UserInfoProps {
     currentTabProfile: string;
@@ -10,7 +10,11 @@ interface UserInfoProps {
 
 const UserInfo = ({ currentTabProfile }: UserInfoProps) => {
     const [dropDownActive, setDropDownActive] = useState(false);
-    const user = useContext(UserContext)!;
+    const { user } = useUser();
+
+    if (!user) {
+        return <></>;
+    }
 
     function logout() {
         localStorage.clear();

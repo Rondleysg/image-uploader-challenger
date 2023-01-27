@@ -3,21 +3,21 @@ import { ReactComponent as LogoDevChallenges } from "../../../assets/imgs/devcha
 import SocialProfile from "../../../components/SocialProfile";
 import FormAuthentication from "../FormAuthentication";
 import { useState } from "react";
-import IUser from "../../../interfaces/IUser";
 import loginUser from "../../../services/ws/user/LoginUser";
 import { useNavigate } from "react-router";
+import useUser from "../../../hooks/User/useUser";
 
 interface LoginProps {
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
     setSigned: React.Dispatch<React.SetStateAction<boolean>>;
-    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 }
 
-const Login = ({ setCurrentTab, setSigned, setUser }: LoginProps) => {
+const Login = ({ setCurrentTab, setSigned }: LoginProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [msgError, setMsgError] = useState("");
     const navigate = useNavigate();
+    const { setUser } = useUser();
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();

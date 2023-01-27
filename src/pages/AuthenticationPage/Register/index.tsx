@@ -4,18 +4,18 @@ import SocialProfile from "../../../components/SocialProfile";
 import FormAuthentication from "../FormAuthentication";
 import { useState } from "react";
 import createUser from "../../../services/ws/user/CreateUser";
-import IUser from "../../../interfaces/IUser";
+import useUser from "../../../hooks/User/useUser";
 
 interface RegisterProps {
     setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
     setSigned: React.Dispatch<React.SetStateAction<boolean>>;
-    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 }
 
-const Register = ({ setCurrentTab, setSigned, setUser }: RegisterProps) => {
+const Register = ({ setCurrentTab, setSigned }: RegisterProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [msgError, setMsgError] = useState("");
+    const { setUser } = useUser();
 
     function onClickLink(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         event.preventDefault();
