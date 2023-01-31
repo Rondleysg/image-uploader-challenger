@@ -36,11 +36,38 @@
 <!-- OVERVIEW -->
 
 ## Overview
-#### (out of date)
-![image](https://user-images.githubusercontent.com/80141884/211821356-304a84a6-3928-4666-b250-02db0d6dbdb9.png)
-![image](https://user-images.githubusercontent.com/80141884/211826016-d1915fcd-bf47-4961-9483-1e53ed41211b.png)
-![image](https://user-images.githubusercontent.com/80141884/211821811-7bfae028-9d00-4c9c-9078-e5ba9df91de7.png)
-[![Image from Gyazo](https://i.gyazo.com/b220a7c7e81ccc1638de3d6ba96c4fbb.gif)](https://gyazo.com/b220a7c7e81ccc1638de3d6ba96c4fbb)
+#### Home page without login
+![image](https://user-images.githubusercontent.com/80141884/215758187-1bffa2db-3b12-4a26-847f-c26bd83b478c.png)
+
+#### Login screen
+![image](https://user-images.githubusercontent.com/80141884/215753194-d13a5438-b856-4e58-9462-edbfe4acb599.png)
+
+#### Register Screen
+![image](https://user-images.githubusercontent.com/80141884/215753409-7e9315b7-a47d-48e5-ab77-870265444877.png)
+
+#### Home page logged in
+![image](https://user-images.githubusercontent.com/80141884/215758037-2082e86d-4744-4271-8d5c-857304a32e1a.png)
+
+#### Delete button and caption when hovering over the logged in image
+![image](https://user-images.githubusercontent.com/80141884/215755521-9ae9cebd-7b71-402c-953f-16e23d3cf271.png)
+
+#### Image upload
+![image](https://user-images.githubusercontent.com/80141884/215758413-eafc8f0a-eafd-4243-9977-34df93d8884e.png)
+
+#### Loading by uploading image
+![image](https://user-images.githubusercontent.com/80141884/215755014-6f7d8c8e-b08a-4883-ba65-5576256265ee.png)
+
+#### Success screen after finishing uploading
+![image](https://user-images.githubusercontent.com/80141884/215755291-fa8f8318-275a-4eaf-9e83-c4269daa27f0.png)
+
+#### Account options menu
+![image](https://user-images.githubusercontent.com/80141884/215755747-ac787d63-c8c3-4b25-ab10-ee4e6078e2dd.png)
+
+#### Profile page
+![image](https://user-images.githubusercontent.com/80141884/215757195-55d176d2-7987-41b9-8d95-21694d9d594a.png)
+
+#### Edit profile page
+![image](https://user-images.githubusercontent.com/80141884/215757317-e86e96a7-6292-4f19-8c33-f5d8faa72ff5.png)
 
 
 -   You can see the demo <a href="https://image-uploader-challenger.vercel.app/">
@@ -106,4 +133,4 @@ $ npm start
 
 ## Contact
 
--   GitHub [@your-username](https://github.com/Rondleysg/})
+-   GitHub [@Rondleysg](https://github.com/Rondleysg/})
