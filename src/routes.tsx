@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserContext from "./context/User";
 import useCookies from "./hooks/Cookies/useCookies";
-import IUser from "./interfaces/IUser";
-import AuthenticationPage from "./pages/AuthenticationPage";
-import ProfilePage from "./pages/ProfilePage";
-import UnsplashPage from "./pages/UnsplashPage";
 import getUserByToken from "./services/ws/user/GetUserByToken";
+import IUser from "./interfaces/IUser";
+import Loading from "./components/Loading";
+
+const ProfilePage = React.lazy(() => import("./pages/ProfilePage"));
+const UnsplashPage = React.lazy(() => import("./pages/UnsplashPage"));
+const AuthenticationPage = React.lazy(() => import("./pages/AuthenticationPage"));
 
 export default function AppRoutes() {
     const [signed, setSigned] = useState<boolean>(false);
@@ -38,16 +40,21 @@ export default function AppRoutes() {
     return (
         <UserContext.Provider value={{ user, setUser }}>
             <Router>
-                <Routes>
-                    <Route path="/" element={<UnsplashPage signed={signed} />} />
-                    {signed && user ? (
-                        <>
-                            <Route path="profile" element={<ProfilePage />} />
-                        </>
-                    ) : (
-                        <Route path="*" element={<AuthenticationPage setSigned={setSigned} />} />
-                    )}
-                </Routes>
+                <Suspense fallback={<Loading title="Loading" />}>
+                    <Routes>
+                        <Route path="/" element={<UnsplashPage signed={signed} />} />
+                        {signed && user ? (
+                            <>
+                                <Route path="profile" element={<ProfilePage />} />
+                            </>
+                        ) : (
+                            <Route
+                                path="*"
+                                element={<AuthenticationPage setSigned={setSigned} />}
+                            />
+                        )}
+                    </Routes>
+                </Suspense>
             </Router>
         </UserContext.Provider>
     );
