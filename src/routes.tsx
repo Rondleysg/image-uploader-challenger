@@ -16,8 +16,10 @@ export default function AppRoutes() {
     useEffect(() => {
         async function getUser(token: string) {
             const userFromToken = await getUserByToken(token);
-            setUser(userFromToken);
-            setSigned(true);
+            if (userFromToken.id) {
+                setUser(userFromToken);
+                setSigned(true);
+            }
         }
         const token = cookies.get("token");
         if (token) {
@@ -31,7 +33,6 @@ export default function AppRoutes() {
         }
 
         cookies.set("token", user.token);
-        setSigned(true);
     }, [user, cookies]);
 
     return (

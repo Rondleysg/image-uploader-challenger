@@ -22,12 +22,10 @@ const EditProfile = ({ user, setUser }: EditProfileProps) => {
         event.preventDefault();
         const img = event.target.files![0];
         const result = await editPhotoUser(user, img);
-        if (result.startsWith("https")) {
-            setUser({ ...user, profilePicture: result });
-            cookies.set("token", newUser.token);
+        if (result === 200) {
             window.location.reload();
         } else {
-            setMsgError(result);
+            setMsgError(result.toLocaleString());
         }
     }
 

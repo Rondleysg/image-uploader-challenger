@@ -3,16 +3,15 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import IPhoto from "../../../interfaces/IPhoto";
 import http from "../../../services/ws/WsConfig";
 import style from "./imagesContent.module.scss";
-import { useEffect, useState } from "react";
 import useCookies from "../../../hooks/Cookies/useCookies";
 
 interface ImagesContentUnsplashProps {
     images: IPhoto[];
     setImages: React.Dispatch<React.SetStateAction<IPhoto[]>>;
+    signed: boolean;
 }
 
-const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps) => {
-    const [logged, setLogged] = useState(false);
+const ImagesContentUnsplash = ({ images, setImages, signed }: ImagesContentUnsplashProps) => {
     const cookies = useCookies();
 
     const showSubtitle = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -37,12 +36,6 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
         });
         setImages(images.filter((photo) => photo.id !== id));
     };
-
-    useEffect(() => {
-        if (localStorage.getItem("token")) {
-            setLogged(true);
-        }
-    }, []);
 
     return (
         <ResponsiveMasonry
@@ -79,7 +72,7 @@ const ImagesContentUnsplash = ({ images, setImages }: ImagesContentUnsplashProps
                                     style.visuallyhidden
                                 )}
                             >
-                                {logged && (
+                                {signed && (
                                     <button
                                         onClick={() => {
                                             deleteImage(element.id);

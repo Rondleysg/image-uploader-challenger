@@ -74,9 +74,10 @@ const UnsplashPage = ({ signed }: UnsplashPageProps) => {
                             image.subtitle?.toLowerCase().includes(textSearch.toLowerCase())
                         )}
                         setImages={setImages}
+                        signed={signed}
                     />
                 ) : (
-                    <ImagesContentUnsplash images={images} setImages={setImages} />
+                    <ImagesContentUnsplash signed={signed} images={images} setImages={setImages} />
                 )}
                 {visibility && (
                     <TabComponentUploadImage

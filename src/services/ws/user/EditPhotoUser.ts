@@ -1,7 +1,7 @@
 import IUser from "../../../interfaces/IUser";
 import http from "../WsConfig";
 
-async function editPhotoUser(user: IUser, img: File): Promise<string> {
+async function editPhotoUser(user: IUser, img: File): Promise<string | number> {
     const formData = new FormData();
 
     formData.append("id", user.id);
@@ -18,7 +18,7 @@ async function editPhotoUser(user: IUser, img: File): Promise<string> {
             data: formData,
         })
         .then((result) => {
-            return result.data.response.user.profilePicture;
+            return result.status;
         })
         .catch((err) => {
             if (err.response.status === 400) {
